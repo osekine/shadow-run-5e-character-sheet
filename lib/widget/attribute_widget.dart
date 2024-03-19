@@ -7,28 +7,31 @@ class AttributeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  IntrinsicHeight(
+    return  Padding(
+      padding: const EdgeInsets.all(8.0),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(13),
-        child: Card(
-          color: Color(0xD9D9D9),
-          elevation: 4.0,
-          child: SizedBox(
-            height: 110,
-            width: 90,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(padding: const EdgeInsets.all(5), child: ClipRRect(borderRadius: BorderRadius.circular(8), child: Card(color: Color(0xFFFAFA), child: Text('$value'),)),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: Text(name),
-                ),
-              ]
+          borderRadius: BorderRadius.circular(13),
+          child: IntrinsicHeight(
+            child: Card(
+              color: Color(0xD9D9D9),
+              elevation: 4.0,
+              child: SizedBox(
+                height: 110,
+                width: 90,
+      
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(padding: const EdgeInsets.all(5), child: SizedBox(width: 80, height: 80, child: ClipRRect(borderRadius: BorderRadius.circular(8), child: Card(color: Color(0xFFFAFA), child: Center(child: Text('$value')),))),
+                      ),
+                      Text(name),
+                      
+                    ]
+                  ),
+              
+              ),
             ),
           ),
-        ),
       ),
     );
   }

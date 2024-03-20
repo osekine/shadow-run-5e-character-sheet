@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class BigText extends StatelessWidget {
   final String _text;
   final Color _color;
-  const BigText({super.key, required String text, required Color color})
+  const BigText({super.key, required String text, Color color = Colors.black})
       : _text = text,
         _color = color;
 
@@ -20,7 +20,7 @@ class BigText extends StatelessWidget {
 class MediumText extends StatelessWidget {
   final String _text;
   final Color _color;
-  const MediumText({super.key, required String text, required Color color})
+  const MediumText({super.key, required String text, Color color = Colors.black})
       : _text = text,
         _color = color;
 
@@ -37,16 +37,16 @@ class MediumText extends StatelessWidget {
 class SmallText extends StatelessWidget {
   final String _text;
   final Color _color;
-  const SmallText({super.key, required String text, required Color color})
+  const SmallText({super.key, required String text, Color color = Colors.black})
       : _text = text,
         _color = color;
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      _text.toUpperCase(),
+      _text,
       style: TextStyle(
-          fontSize: 12, color: _color ),
+          fontSize: 14, color: _color ),
     );
   }
 }

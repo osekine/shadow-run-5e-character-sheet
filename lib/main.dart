@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shadowrun_5e_character_sheet/screen/attributes_screen.dart';
+import 'package:shadowrun_5e_character_sheet/screen/main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 238, 224, 31)),
         useMaterial3: true,
       ),
-      home: AttributesScreen(),
+      home: MainScreen(),
     );
   }
 }

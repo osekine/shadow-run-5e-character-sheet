@@ -12,7 +12,7 @@ class BigText extends StatelessWidget {
     return Text(
       _text.toUpperCase(),
       style: TextStyle(
-          fontSize: 32, color: _color, fontWeight: FontWeight.bold, ),
+          fontSize: 30, color: _color, fontWeight: FontWeight.bold, ),
     );
   }
 }

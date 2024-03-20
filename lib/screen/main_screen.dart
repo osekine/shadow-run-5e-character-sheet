@@ -27,7 +27,7 @@ class _MainScreenState extends State<MainScreen> {
           selectedIndex: currentPageIndex,
           destinations: [
             NavigationDestination(icon: Icon(Icons.person), label: 'Attributes'),
-            NavigationDestination(icon: Icon(Icons.emoji_events), label: 'Skills'),
+            NavigationDestination(icon: Icon(Icons.star), label: 'Skills'),
           ],
         ),
         appBar: AppBar(

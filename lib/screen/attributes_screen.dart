@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shadowrun_5e_character_sheet/widget/attribute_widget.dart';
 
 import '../model/character_model.dart';
+import '../widget/health_widget.dart';
 
 class AttributesScreen extends StatelessWidget {
   final CharacterModel character = CharacterModel();
@@ -10,7 +11,7 @@ class AttributesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      appBar: AppBar (title: HealthWidget(model: character.health),),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

@@ -11,6 +11,4 @@ class Attributes
   int magic = 1;
   int edge = 1;
   double entity = 6.0;
-  int fleshWounds = 1;
-  int stunWounds = 1;
 }

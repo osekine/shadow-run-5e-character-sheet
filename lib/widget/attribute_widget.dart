@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:shadowrun_5e_character_sheet/model/attributes_model.dart';
 
 import '../utility/text_widgets.dart';
 
 class AttributeWidget extends StatelessWidget {
-  final int value;
-  final String name;
+  final AttributeModel model;
   final Color color;
   const AttributeWidget(
       {super.key,
-      required this.value,
-      required this.name,
+      required this.model,
       required this.color});
 
   @override
@@ -36,13 +35,13 @@ class AttributeWidget extends StatelessWidget {
                                 color: Color.fromARGB(255, 255, 250, 250),
                                 child: Center(
                                     child: BigText(
-                                        text: name == 'Ent'
-                                            ? '${value / 100}${value % 100}'
-                                            : '$value',
+                                        text: model.toString() == 'СУЩ'
+                                            ? '${model.value / 100}${model.value % 100}'
+                                            : '${model.value}',
                                         color: color))),
                           ))),
                   MediumText(
-                    text: name,
+                    text: model.toString(),
                     color: color,
                   ),
                 ]),

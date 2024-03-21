@@ -1,14 +1,28 @@
+class AttributeModel
+{
+  final String name;
+  int value;
+
+  AttributeModel({required this.name, required this.value});
+
+  @override
+  String toString() {
+    return name.toUpperCase();
+  }
+}
+
 class Attributes
 {
-  int strength = 1;
-  int agility = 1;
-  int body = 1;
-  int reaction = 1;
-  int logic = 1;
-  int intuition = 1;
-  int willpower = 1;
-  int charisma = 1;
-  int magic = 1;
-  int edge = 1;
-  double entity = 6.0;
+  final AttributeModel strength = AttributeModel(name: 'Сила', value: 1);
+  final AttributeModel agility = AttributeModel(name: 'Лов', value: 1);
+  final AttributeModel body = AttributeModel(name: 'Тело', value: 1);
+  final AttributeModel reaction = AttributeModel(name: 'Реа', value: 1);
+  final AttributeModel logic = AttributeModel(name: 'Лог', value: 1);
+  final AttributeModel intuition = AttributeModel(name: 'Инт', value: 1);
+  final AttributeModel willpower = AttributeModel(name: 'СВ', value: 1);
+  final AttributeModel charisma = AttributeModel(name: 'Хар', value: 1);
+  final AttributeModel magic = AttributeModel(name: 'Маг', value: 1);
+  final AttributeModel edge = AttributeModel(name: 'Гр', value: 6);
+  final AttributeModel entity = AttributeModel(name: 'Сущ', value: 600);
 }
+

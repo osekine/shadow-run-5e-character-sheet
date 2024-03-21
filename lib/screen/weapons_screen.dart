@@ -7,6 +7,6 @@ class WeaponsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WeaponWidget(model: weapons['AresViperV']!);
+    return WeaponWidget(model: weapons['Assault Rifles']!['AK']!);
   }
 }

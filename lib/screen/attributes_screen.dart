@@ -4,11 +4,11 @@ import '../model/character_model.dart';
 import '../widget/attribute_widget.dart';
 
 class AttributesScreen extends StatelessWidget {
-  final CharacterModel character;
-  const AttributesScreen({super.key, required this.character});
+  const AttributesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+  final CharacterModel character = CharacterModel.of(context)!;
     return Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../model/character_model.dart';
 import '../model/health_model.dart';
 import '../utility/text_widgets.dart';
 
 class HealthWidget extends StatelessWidget {
-  final HealthModel model;
-  const HealthWidget({super.key, required this.model});
+  const HealthWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+  final HealthModel model = CharacterModel.of(context)!.health;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:shadowrun_5e_character_sheet/model/character_model.dart';
 
 import 'attributes_model.dart';

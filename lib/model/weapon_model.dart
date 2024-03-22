@@ -546,7 +546,7 @@ Map<String, WeaponModel> launchers = {
       firemode: [Firemode.sa]),
 };
 
-Map<String, Map<String, WeaponModel>> weapons = {
+Map<String, Map<String, WeaponModel>> weaponList = {
   'Tasers': tasers,
   'Holdouts': holdouts,
   'Light Pistols': lightPistols,

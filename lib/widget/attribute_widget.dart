@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shadowrun_5e_character_sheet/model/attributes_model.dart';
-import 'package:shadowrun_5e_character_sheet/model/character_model.dart';
 
 import '../utility/text_widgets.dart';
 import 'chage_value_wiget.dart';

@@ -3,6 +3,7 @@ import 'package:shadowrun_5e_character_sheet/model/attributes_model.dart';
 import 'package:shadowrun_5e_character_sheet/screen/attributes_screen.dart';
 import 'package:shadowrun_5e_character_sheet/screen/skills_screen.dart';
 import 'package:shadowrun_5e_character_sheet/screen/weapons_screen.dart';
+import 'package:shadowrun_5e_character_sheet/widget/weapon_list_widget.dart';
 
 import '../model/character_model.dart';
 import '../model/health_model.dart';
@@ -23,6 +24,9 @@ class _MainScreenState extends State<MainScreen> {
       attributes: Attributes(),
       health: HealthModel(),
       child: Scaffold(
+          floatingActionButton: currentPageIndex == 2 ? FloatingActionButton(onPressed: ()async{
+            await showDialog(context: context,builder: (context) => const WeaponListWidget() );
+          }): null,
           bottomNavigationBar: NavigationBar(
             onDestinationSelected: (int index) {
               currentPageIndex = index;
@@ -30,7 +34,7 @@ class _MainScreenState extends State<MainScreen> {
             },
             indicatorColor: Colors.amber,
             selectedIndex: currentPageIndex,
-            destinations: [
+            destinations: const [
               NavigationDestination(icon: Icon(Icons.person), label: 'Attributes'),
               NavigationDestination(icon: Icon(Icons.star), label: 'Skills'),
               NavigationDestination(icon: Icon(Icons.fireplace), label: 'Weapons'),

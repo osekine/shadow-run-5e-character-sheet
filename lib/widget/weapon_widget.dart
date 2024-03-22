@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:shadowrun_5e_character_sheet/model/weapon_model.dart';
 
 import '../utility/text_widgets.dart';

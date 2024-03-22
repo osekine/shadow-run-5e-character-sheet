@@ -53,7 +53,7 @@ class _AttributeWidgetState extends State<AttributeWidget> {
                                   child: Center(
                                       child: BigText(
                                           text: widget.model.toString() == 'СУЩ'
-                                              ? '${widget.model.value / 100}${widget.model.value % 100}'
+                                              ? '${(widget.model.value / 100).floor()}.${widget.model.value % 100}'
                                               : '${widget.model.value}',
                                           color: widget.color))),
                             ),

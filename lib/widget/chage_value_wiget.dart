@@ -24,27 +24,35 @@ class _ChangeValueWidgetState extends State<ChangeValueWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicHeight(
+    return Center(
       child: Card(
           elevation: 2,
           child: Padding(
             padding: const EdgeInsets.all(4.0),
-            child: Column(children: [
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
               MediumText(text: widget.title),
-              GestureDetector(child: BigText(text: value.toString()), onTap: () {Navigator.of(context).pop(value);} ),
+              GestureDetector(
+                  child: BigText(text: value.toString()),
+                  onTap: () {
+                    Navigator.of(context).pop(value);
+                  }),
               Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   ElevatedButton(
                       onPressed: () {
-                        value++;
+                        value--;
                         setState(() {});
                       },
                       child: BigText(
-                        text: '+',
+                        text: '-',
                       )),
                   ElevatedButton(
                       onPressed: () {
-                        value--;
+                        value++;
                         setState(() {});
                       },
                       child: BigText(

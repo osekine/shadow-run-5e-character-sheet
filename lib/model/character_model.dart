@@ -9,13 +9,12 @@ class CharacterModel extends InheritedWidget {
   final HealthModel health;
   final List<WeaponModel> weapons;
 
-  const CharacterModel({
+  CharacterModel({
     Key? key,
     required this.attributes,
     required this.health,
-    required Widget child,
-    this.weapons = const [], 
-  })  :
+    required Widget child, 
+  })  : weapons = List.empty(growable: true),
         super(key: key, child: child);
 
   @override

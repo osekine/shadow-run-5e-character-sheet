@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shadowrun_5e_character_sheet/model/weapon_model.dart';
 import 'package:shadowrun_5e_character_sheet/widget/weapon_widget.dart';
 
 import '../model/character_model.dart';

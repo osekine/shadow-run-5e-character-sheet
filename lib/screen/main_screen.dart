@@ -9,23 +9,44 @@ import '../model/character_model.dart';
 import '../model/health_model.dart';
 import '../widget/health_widget.dart';
 
-class MainScreen extends StatefulWidget {
+class MainScreen extends StatelessWidget {
   MainScreen({super.key});
 
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  int currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
     return CharacterModel(
       attributes: Attributes(),
       health: HealthModel(),
-      child: Scaffold(
+      child: const ProviderWidget(),
+    );
+  }
+}
+
+class ProviderWidget extends StatefulWidget {
+  const ProviderWidget({super.key});
+
+  @override
+  State<ProviderWidget> createState() => _ProviderWidgetState();
+}
+
+class _ProviderWidgetState extends State<ProviderWidget> {
+  int currentPageIndex = 0;
+  late CharacterModel model;
+
+  @override
+  initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    model = CharacterModel.of(context)!;
+    return Scaffold(
           floatingActionButton: currentPageIndex == 2 ? FloatingActionButton(onPressed: ()async{
-            await showDialog(context: context,builder: (context) => const WeaponListWidget() );
+            final weapon = await showDialog(context: context, builder: (context) => const WeaponListWidget() );
+            if(weapon!=null){
+              CharacterModel.of(context)!.weapons.add(weapon);
+            }
           }): null,
           bottomNavigationBar: NavigationBar(
             onDestinationSelected: (int index) {
@@ -42,9 +63,8 @@ class _MainScreenState extends State<MainScreen> {
           ),
           appBar: AppBar(
             foregroundColor: Colors.black,
-            title: HealthWidget(),
+            title: const HealthWidget(),
           ),
-          body: <Widget>[AttributesScreen(), SkillsScreen(), WeaponsScreen()][currentPageIndex]),
-    );
+          body: <Widget>[const AttributesScreen(), const SkillsScreen(), const WeaponsScreen()][currentPageIndex]);
   }
 }

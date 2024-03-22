@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shadowrun_5e_character_sheet/model/weapon_model.dart';
 import 'package:shadowrun_5e_character_sheet/utility/text_widgets.dart';
 
-import '../model/character_model.dart';
 
 class WeaponListWidget extends StatefulWidget {
   const WeaponListWidget({super.key});

@@ -26,9 +26,11 @@ class _SkillWidgetState extends State<SkillWidget> {
               flex: 4,
               child: Padding(
                 padding: const EdgeInsets.all(2.0),
-                child: Container(
+                child: widget.model.isDefault || widget.model.level > 0 ? Container(
                     color: Colors.white,
-                    child: SmallText(text: widget.model.name)),
+                    child: SmallText(text: widget.model.name)) : Container(
+                    color: Colors.black,
+                    child: SmallText(text: widget.model.name, color: Colors.white)),
               ),
             ),
             Flexible(

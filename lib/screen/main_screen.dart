@@ -42,11 +42,12 @@ class _ProviderWidgetState extends State<ProviderWidget> {
   Widget build(BuildContext context) {
     model = CharacterModel.of(context)!;
     return Scaffold(
-          floatingActionButton: currentPageIndex == 2 ? FloatingActionButton(onPressed: ()async{
+          floatingActionButton: currentPageIndex == 2 ? FloatingActionButton(
+            child: const Icon(Icons.add),
+            onPressed: ()async{
             final weapon = await showDialog(context: context, builder: (context) => const WeaponListWidget() );
             if(weapon!=null){
               model.weapons.add(weapon);
-              setState((){});
             }
           }): null,
           bottomNavigationBar: NavigationBar(

@@ -1,5 +1,4 @@
-class AttributeModel
-{
+class AttributeModel {
   final String name;
   int value;
 
@@ -11,8 +10,7 @@ class AttributeModel
   }
 }
 
-class Attributes
-{
+class Attributes {
   final AttributeModel strength = AttributeModel(name: 'Сила', value: 1);
   final AttributeModel agility = AttributeModel(name: 'Лов', value: 2);
   final AttributeModel body = AttributeModel(name: 'Тело', value: 3);
@@ -26,3 +24,27 @@ class Attributes
   final AttributeModel entity = AttributeModel(name: 'Сущ', value: 600);
 }
 
+class MatrixAttributes {
+  final AttributeModel _rating;
+  final AttributeModel _attack;
+  final AttributeModel _sleaze;
+  final AttributeModel _dataProc;
+  final AttributeModel _firewall;
+  AttributeModel get attack => _attack;
+  AttributeModel get rating => _rating;
+  AttributeModel get sleaze => _sleaze;
+  AttributeModel get dataProc => _dataProc;
+  AttributeModel get firewall => _firewall;
+
+  MatrixAttributes(
+      { required int rating,
+        required int attack,
+      required int sleaze,
+      required int dataProc,
+      required int firewall})
+      : _rating = AttributeModel(name: "Рейтинг", value: rating), 
+      _attack = AttributeModel(name: "Атака", value: attack),
+        _sleaze = AttributeModel(name: "Слив", value: sleaze),
+        _dataProc = AttributeModel(name: "Обрабтка", value: dataProc),
+        _firewall = AttributeModel(name: "Фаервол", value: firewall);
+}

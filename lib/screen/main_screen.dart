@@ -45,7 +45,8 @@ class _ProviderWidgetState extends State<ProviderWidget> {
           floatingActionButton: currentPageIndex == 2 ? FloatingActionButton(onPressed: ()async{
             final weapon = await showDialog(context: context, builder: (context) => const WeaponListWidget() );
             if(weapon!=null){
-              CharacterModel.of(context)!.weapons.add(weapon);
+              model.weapons.add(weapon);
+              setState((){});
             }
           }): null,
           bottomNavigationBar: NavigationBar(

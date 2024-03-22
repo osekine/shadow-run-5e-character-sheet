@@ -66,10 +66,7 @@ class _SkillWidgetState extends State<SkillWidget> {
                                 '${widget.model.level}+${widget.model.attribute.value}'))),
               ),
             ),
-            // Flexible(
-            //   flex: 1,
-            //   child: TextField(decoration: InputDecoration.collapsed(hintText: 'B'),),
-            // ),
+            
           ]),
     );
   }

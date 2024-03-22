@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shadowrun_5e_character_sheet/model/attributes_model.dart';
+import 'package:shadowrun_5e_character_sheet/model/character_model.dart';
 
 import '../utility/text_widgets.dart';
+import 'chage_value_wiget.dart';
 
-class AttributeWidget extends StatelessWidget {
+class AttributeWidget extends StatefulWidget {
   final AttributeModel model;
   final Color color;
   const AttributeWidget(
@@ -11,6 +13,11 @@ class AttributeWidget extends StatelessWidget {
       required this.model,
       required this.color});
 
+  @override
+  State<AttributeWidget> createState() => _AttributeWidgetState();
+}
+
+class _AttributeWidgetState extends State<AttributeWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,18 +38,29 @@ class AttributeWidget extends StatelessWidget {
                           height: 85,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
-                            child: Card(
-                                color: Color.fromARGB(255, 255, 250, 250),
-                                child: Center(
-                                    child: BigText(
-                                        text: model.toString() == 'СУЩ'
-                                            ? '${model.value / 100}${model.value % 100}'
-                                            : '${model.value}',
-                                        color: color))),
+                            child: GestureDetector(
+                              onDoubleTap: ()async{
+                                int? a= await showDialog(context: context, builder: ((context) => ChangeValueWidget(value: widget.model.value, title: widget.model.toString())));
+                                if(a!=null){
+                                  widget.model.value = a;
+                                  setState(() {
+                                    
+                                  },);
+                                }
+                              },
+                              child: Card(
+                                  color: Color.fromARGB(255, 255, 250, 250),
+                                  child: Center(
+                                      child: BigText(
+                                          text: widget.model.toString() == 'СУЩ'
+                                              ? '${widget.model.value / 100}${widget.model.value % 100}'
+                                              : '${widget.model.value}',
+                                          color: widget.color))),
+                            ),
                           ))),
                   MediumText(
-                    text: model.toString(),
-                    color: color,
+                    text: widget.model.toString(),
+                    color: widget.color,
                   ),
                 ]),
           ),

@@ -17,16 +17,7 @@ class SkillWidget extends StatelessWidget {
               flex: 4,
               child: Padding(
                 padding: const EdgeInsets.all(2.0),
-                child: SmallText(text: model.name),
-              ),
-            ),
-            Flexible(
-              fit: FlexFit.tight,
-
-              flex: 2,
-              child: Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: SmallText(text: model.attribute.toString()),
+                child: Container(color: Colors.white, child: SmallText(text: model.name)),
               ),
             ),
             Flexible(
@@ -35,12 +26,21 @@ class SkillWidget extends StatelessWidget {
               flex: 1,
               child: Padding(
                 padding: const EdgeInsets.all(2.0),
-                child: SmallText(text: '${model.level}+${model.attribute.value}'),
+                child: Container(color: Colors.white, child: SmallText(text: model.attribute.toString())),
+              ),
+            ),
+            Flexible(
+              fit: FlexFit.tight,
+
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: Container(color: Colors.white, child: SmallText(text: '${model.level}+${model.attribute.value}')),
               ),
             ),
             // Flexible(
             //   flex: 1,
-            //   child: TextField(),
+            //   child: TextField(decoration: InputDecoration.collapsed(hintText: 'B'),),
             // ),
           ]),
         );
@@ -54,19 +54,29 @@ class SkillGroupWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row( children: [
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SizedBox(
-          width: 80,
-          child: SmallText(text: model.name),
-        ),
+    return IntrinsicHeight(
+      child: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch, 
+          children: [
+          Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: Container(
+              color: Colors.white,
+              child: SizedBox(
+                width: 80,
+                child: Center(child: SmallText(text: model.name)),
+              ),
+            ),
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [for (var skill in model.skills) SkillWidget(model: skill)],
+          )
+        ],),
       ),
-      Column(
-        
-        children: [for (var skill in model.skills) SkillWidget(model: skill)],
-      )
-    ],);
+    );
   }
 }
 
@@ -78,19 +88,22 @@ class SkillTypeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          Center(
-            child: BigText(text: model.name),
-          ),
-          for (var skillGroup in model.skillGroups) SkillGroupWidget(model: skillGroup),
-          for (var skill in model.freeSkills) Row(
-            children: [
-              SizedBox(width: 94),
-              SkillWidget(model: skill),
-            ],
-          ),
-        ],
+      child: Container(
+        color: Color.fromARGB(255, 217, 217, 217),
+        child: Column(
+          children: [
+            Center(
+              child: BigText(text: model.name),
+            ),
+            for (var skillGroup in model.skillGroups) SkillGroupWidget(model: skillGroup),
+            for (var skill in model.freeSkills) Row(
+              children: [
+                const SizedBox(width: 86),
+                SkillWidget(model: skill),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

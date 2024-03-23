@@ -9,7 +9,7 @@ class SkillsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    final model = CharacterModel.of(context)!.skills;
+    final model = CharacterProvider.of(context).skills;
     return ListView(
       children: [for (var skills in model.skillTypes) SkillTypeWidget(model: skills)],
     );

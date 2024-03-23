@@ -8,7 +8,7 @@ class AttributesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  final CharacterModel character = CharacterModel.of(context)!;
+  final CharacterModel character = CharacterProvider.of(context);
     return Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

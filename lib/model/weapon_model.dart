@@ -1,7 +1,13 @@
+
+import 'package:json_annotation/json_annotation.dart';
+
+part 'weapon_model.g.dart';
+
 enum Firemode { ss, sa, fa, bf }
 
 enum DamageType { flesh, stun }
 
+@JsonSerializable()
 class WeaponModel {
   final String? name;
   final String? type;
@@ -26,11 +32,22 @@ class WeaponModel {
     required this.firemode,
     this.mods
   });
+
+  factory WeaponModel.fromJson(Map<String, dynamic> json) => _$WeaponModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$WeaponModelToJson(this);
 }
 
+@JsonSerializable()
 class WeaponMod {
   String? name;
   String? description;
+
+  WeaponMod({this.name, this.description});
+
+  factory WeaponMod.fromJson(Map<String, dynamic> json) => _$WeaponModFromJson(json);
+
+  Map<String, dynamic> toJson() => _$WeaponModToJson(this);
 }
 
 Map<String, WeaponModel> tasers = {

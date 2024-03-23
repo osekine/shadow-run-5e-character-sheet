@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void dispose() {
-    print('a');
+
     super.dispose();
   }
   // This widget is the root of your application.

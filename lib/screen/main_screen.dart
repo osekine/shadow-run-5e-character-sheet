@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shadowrun_5e_character_sheet/screen/attributes_screen.dart';
+import 'package:shadowrun_5e_character_sheet/screen/info_screen.dart';
 import 'package:shadowrun_5e_character_sheet/screen/skills_screen.dart';
 import 'package:shadowrun_5e_character_sheet/screen/weapons_screen.dart';
 import 'package:shadowrun_5e_character_sheet/widget/weapon_list_widget.dart';
@@ -48,13 +49,14 @@ class _MainScreenState extends State<MainScreen> {
                 NavigationDestination(icon: Icon(Icons.person), label: 'Attributes'),
                 NavigationDestination(icon: Icon(Icons.star), label: 'Skills'),
                 NavigationDestination(icon: Icon(Icons.whatshot), label: 'Weapons'),
+                NavigationDestination(icon: Icon(Icons.info), label: 'Info'),
               ],
             ),
             appBar: AppBar(
               foregroundColor: Colors.black,
               title: const HealthWidget(),
             ),
-            body:<Widget>[const AttributesScreen(), const SkillsScreen(), const WeaponsScreen()][currentPageIndex]),
+            body:<Widget>[const AttributesScreen(), const SkillsScreen(), const WeaponsScreen(), const InfoScreen()][currentPageIndex]),
     );
   }
 }

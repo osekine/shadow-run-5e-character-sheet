@@ -57,7 +57,6 @@ class _SkillWidgetState extends State<SkillWidget> {
                               title: widget.model.name));
                       if (a != null) {
                         widget.model.level = a;
-                        print('${widget.model.name} - ${widget.model.level}');
                         setState(() {});
                       }
                     },

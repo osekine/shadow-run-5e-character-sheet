@@ -60,7 +60,7 @@ class _ProviderWidgetState extends State<ProviderWidget> {
             destinations: const [
               NavigationDestination(icon: Icon(Icons.person), label: 'Attributes'),
               NavigationDestination(icon: Icon(Icons.star), label: 'Skills'),
-              NavigationDestination(icon: Icon(Icons.fireplace), label: 'Weapons'),
+              NavigationDestination(icon: Icon(Icons.whatshot), label: 'Weapons'),
             ],
           ),
           appBar: AppBar(

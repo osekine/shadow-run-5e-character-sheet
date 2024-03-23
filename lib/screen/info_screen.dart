@@ -18,7 +18,7 @@ class _InfoScreenState extends State<InfoScreen> {
 
   @override
   void initState() {
-    model = CharacterModel.of(context)!.info;
+    model = CharacterProvider.of(context).info;
     _nameController = TextEditingController(text: model.name);
     super.initState();
   }

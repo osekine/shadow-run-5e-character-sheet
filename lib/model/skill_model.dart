@@ -1,6 +1,10 @@
 
 import 'attributes_model.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'skill_model.g.dart';
+
+@JsonSerializable()
 class SkillModel {
   final String name;
   final AttributeModel attribute;
@@ -14,8 +18,13 @@ class SkillModel {
       this.level = 0,
       this.bonus = 0,
       this.isDefault = true});
+
+  factory SkillModel.fromJson(Map<String, dynamic> json) => _$SkillModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SkillModelToJson(this);
 }
 
+@JsonSerializable()
 class SkillGroupModel {
   final String name;
   List<SkillModel> skills = [];
@@ -23,8 +32,13 @@ class SkillGroupModel {
 
   SkillGroupModel(
       {required this.name, required this.skills, this.isBroke = false});
+  
+  factory SkillGroupModel.fromJson(Map<String, dynamic> json) => _$SkillGroupModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SkillGroupModelToJson(this);
 }
 
+@JsonSerializable()
 class SkillTypeModel {
   final String name;
   final List<SkillGroupModel> skillGroups;
@@ -34,8 +48,13 @@ class SkillTypeModel {
       {required this.name,
       required this.skillGroups,
       required this.freeSkills});
+
+  factory SkillTypeModel.fromJson(Map<String, dynamic> json) => _$SkillTypeModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SkillTypeModelToJson(this);
 }
 
+@JsonSerializable()
 class Skills {
   final Attributes model;
   List<SkillTypeModel> skillTypes = [];
@@ -44,7 +63,15 @@ class Skills {
   {
     return skillTypes[i];
   }
-  Skills({required this.model}) {
+  Skills({required this.model, required this.skillTypes});
+
+  factory Skills.fromJson(Map<String, dynamic> json) => _$SkillsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SkillsToJson(this);
+
+  
+
+  Skills.start({required this.model}) {
     skillTypes = [
       //БОЕВЫЕ НАВЫКИ+
       SkillTypeModel(name: 'Боевые', skillGroups: [

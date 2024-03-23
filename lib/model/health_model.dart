@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'health_model.g.dart';
+
+@JsonSerializable()
 class HealthModel
 {
   int fleshWounds = 1;

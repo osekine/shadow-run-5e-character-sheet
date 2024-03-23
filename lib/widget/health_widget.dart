@@ -15,7 +15,7 @@ class HealthWidget extends StatefulWidget {
 class _HealthWidgetState extends State<HealthWidget> {
   @override
   Widget build(BuildContext context) {
-  final HealthModel model = CharacterModel.of(context)!.health;
+  final HealthModel model = CharacterProvider.of(context).health;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,

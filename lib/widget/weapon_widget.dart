@@ -26,11 +26,11 @@ class WeaponWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       // direction: Axis.horizontal,
                       children: [
-                        DataCell(title: 'Name', data: model.name!, flex: 6),
-                        DataCell(title: 'Acc', data: model.accuracy!, flex: 1),
-                        DataCell(title: 'DMG', data: model.damage!, flex: 1),
-                        DataCell(title: 'AP', data: model.AP!, flex: 1),
-                        DataCell(title: 'Rec', data: model.recoil!, flex: 1),
+                        dataCell(title: 'Name', data: model.name!, flex: 6),
+                        dataCell(title: 'Acc', data: model.accuracy!, flex: 1),
+                        dataCell(title: 'DMG', data: model.damage!, flex: 1),
+                        dataCell(title: 'AP', data: model.AP!, flex: 1),
+                        dataCell(title: 'Rec', data: model.recoil!, flex: 1),
                       ],
                     ),
                     Flex(direction: Axis.horizontal, children: [
@@ -40,8 +40,8 @@ class WeaponWidget extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(3.0),
                           child: Row(children: [
-                            SmallText(text: 'Firemode'),
-                            ...model.firemode.map((e) => FiremodeCell(e!)),
+                            const SmallText(text: 'Firemode'),
+                            ...model.firemode.map((e) => firemodeCell(e!)),
                           ]),
                         ),
                       ),
@@ -50,8 +50,8 @@ class WeaponWidget extends StatelessWidget {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              SmallText(text: 'Ammo'),
-                              SizedBox(width: 5),
+                              const SmallText(text: 'Ammo'),
+                              const SizedBox(width: 5),
                               Container(
                                 color: Colors.white,
                                 child: SmallText(
@@ -68,7 +68,7 @@ class WeaponWidget extends StatelessWidget {
     });
   }
 
-  Widget DataCell(
+  Widget dataCell(
       {required int flex, required String title, required dynamic data}) {
     return Flexible(
       fit: FlexFit.tight,
@@ -88,11 +88,10 @@ class WeaponWidget extends StatelessWidget {
   }
 }
 
-Widget FiremodeCell(Firemode firemode) {
+Widget firemodeCell(Firemode firemode) {
   return Padding(
     padding: const EdgeInsets.all(2.0),
     child: Container(
-      child: Center(child: SmallText(text: firemode.name.toUpperCase())),
       width: 24,
       height: 24,
       decoration: BoxDecoration(
@@ -104,6 +103,7 @@ Widget FiremodeCell(Firemode firemode) {
         ),
         shape: BoxShape.circle,
       ),
+      child: Center(child: SmallText(text: firemode.name.toUpperCase())),
     ),
   );
 }

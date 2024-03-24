@@ -6,11 +6,12 @@ part of 'health_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-HealthModel _$HealthModelFromJson(Map<String, dynamic> json) => HealthModel()
-  ..fleshWounds = json['fleshWounds'] as int
-  ..stunWounds = json['stunWounds'] as int
-  ..fleshDebuff = json['fleshDebuff'] as int
-  ..stunDebuff = json['stunDebuff'] as int;
+HealthModel _$HealthModelFromJson(Map<String, dynamic> json) => HealthModel(
+      fleshWounds: json['fleshWounds'] as int? ?? 1,
+      stunWounds: json['stunWounds'] as int? ?? 1,
+      fleshDebuff: json['fleshDebuff'] as int? ?? 0,
+      stunDebuff: json['stunDebuff'] as int? ?? 0,
+    );
 
 Map<String, dynamic> _$HealthModelToJson(HealthModel instance) =>
     <String, dynamic>{

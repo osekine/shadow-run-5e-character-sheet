@@ -1,10 +1,18 @@
 import 'package:shadowrun_5e_character_sheet/model/attributes_model.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'electronic_model.g.dart';
+
+@JsonSerializable()
 class ElectronicModel {
   final String name;
   final MatrixAttributes? attributes;
 
   ElectronicModel({required this.name, this.attributes});
+
+  factory ElectronicModel.fromJson(Map<String, dynamic> json) => _$ElectronicModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ElectronicModelToJson(this);
 }
 
 class Commlink extends ElectronicModel {
@@ -29,11 +37,16 @@ Map<String, ElectronicModel> commlinks = {
   'Firelight': Commlink(name: 'Firelight', rating: 7),
 };
 
+@JsonSerializable()
 class DeckApplication {
   final String name;
   final String description;
 
   const DeckApplication({required this.name, required this.description});
+
+  factory DeckApplication.fromJson(Map<String, dynamic> json) => _$DeckApplicationFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DeckApplicationToJson(this);
 }
 
 Map<String, DeckApplication> commonApps = {
@@ -152,11 +165,18 @@ Map<String, Map<String, DeckApplication>> apps = {
   'Hack': hackApps,
 };
 
+@JsonSerializable()
 class Deck extends ElectronicModel {
   final int appCount;
   late List<DeckApplication?> apps;
-  Deck(
-      {required String name,
+  Deck({
+    required super.name,
+    required super.attributes,
+    required this.appCount,
+    required this.apps
+   });
+  Deck.start(
+      {required super.name,
       required this.appCount,
       required int rating,
       required int attack,
@@ -164,7 +184,6 @@ class Deck extends ElectronicModel {
       required int dataProc,
       required int firewall})
       : super(
-            name: name,
             attributes: MatrixAttributes(
                 rating: rating,
                 attack: attack,
@@ -175,7 +194,7 @@ class Deck extends ElectronicModel {
   }
 
   factory Deck.standart({required String name, required int rating}) {
-    return Deck(
+    return Deck.start(
         name: name,
         appCount: rating,
         rating: rating,
@@ -186,7 +205,7 @@ class Deck extends ElectronicModel {
   }
 
   factory Deck.alt({required String name, required int rating}) {
-    return Deck(
+    return Deck.start(
         name: name,
         appCount: rating,
         rating: rating,
@@ -201,6 +220,11 @@ class Deck extends ElectronicModel {
     a.value = b.value;
     b.value = tmp;
   }
+
+  factory Deck.fromJson(Map<String, dynamic> json) => _$DeckFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DeckToJson(this);
+
 }
 
 Map<String, ElectronicModel> decks = {
@@ -215,7 +239,7 @@ Map<String, ElectronicModel> decks = {
   'Firelight': Deck.standart(name: 'Firelight Exalibur', rating: 6),
 };
 
-Map<String, Map<String, ElectronicModel>> devices =
+Map<String, Map<String, ElectronicModel>> devicesList =
 {
   'Commlinks': commlinks,
   'Decks': decks,

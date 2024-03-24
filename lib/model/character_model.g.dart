@@ -16,6 +16,9 @@ CharacterModel _$CharacterModelFromJson(Map<String, dynamic> json) =>
           .map((e) => WeaponModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       skills: Skills.fromJson(json['skills'] as Map<String, dynamic>),
+      devices: (json['devices'] as List<dynamic>)
+          .map((e) => ElectronicModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$CharacterModelToJson(CharacterModel instance) =>
@@ -25,4 +28,5 @@ Map<String, dynamic> _$CharacterModelToJson(CharacterModel instance) =>
       'health': instance.health,
       'weapons': instance.weapons,
       'skills': instance.skills,
+      'devices': instance.devices,
     };

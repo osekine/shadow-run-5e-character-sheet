@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:shadowrun_5e_character_sheet/model/electronic_model.dart';
 import 'package:shadowrun_5e_character_sheet/model/info.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,20 +21,23 @@ class CharacterModel {
   final HealthModel health;
   final List<WeaponModel> weapons;
   final Skills skills;
+  final List<ElectronicModel> devices;
 
   CharacterModel({
     required this.info,
     required this.attributes,
     required this.health,
     required this.weapons,
-    required this.skills
+    required this.skills,
+    required this.devices
   });
 
   CharacterModel.start({required this.attributes}) 
       : info = InfoModel(),
         health = HealthModel(),
          weapons = List.empty(growable: true),
-        skills = Skills.start(model: attributes);
+        skills = Skills.start(model: attributes),
+        devices = List.empty(growable: true);
 
   factory CharacterModel.fromJson(Map<String, dynamic> json) => _$CharacterModelFromJson(json);
 
@@ -51,18 +55,15 @@ class CharacterProvider extends InheritedWidget {
 
   @override
   bool updateShouldNotify(CharacterProvider old) {
-    print('Que?');
-    print(old.model != model);
-    print(model.weapons.length);
     _saveCharacter();
     return model != old.model;
   }
 
   const CharacterProvider({
-    Key? key,
+    super.key,
     required this.model,
-    required Widget child,
-  }) : super(key: key, child: child);
+    required super.child,
+  });
 
 
   static CharacterModel of(BuildContext context) {

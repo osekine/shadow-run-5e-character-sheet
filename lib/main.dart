@@ -20,19 +20,16 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   late final Future<CharacterModel> _character;
-  late CharacterModel _characterModel;
 
   @override
   void initState() {
-    _character = _loadCharacter()..then((value) => _characterModel=value);
+    _character = _loadCharacter();
     super.initState();
   }
 
   Future<CharacterModel> _loadCharacter() async {
-    print('----LOADING...---');
     final prefs = await SharedPreferences.getInstance();
     final json = prefs.getString('character');
-    print(json);
     if (json != null) {
       return CharacterModel.fromJson(jsonDecode(json));
     }
@@ -52,14 +49,13 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         fontFamily: 'JetBrains Mono',
         colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 238, 224, 31)),
+            ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 238, 224, 31)),
         useMaterial3: true,
       ),
       home: FutureBuilder<CharacterModel>(
         future: _character,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            _characterModel = snapshot.data!;
             return MainScreen(model: snapshot.data!);
           } else {
             return const Center(child: CircularProgressIndicator());

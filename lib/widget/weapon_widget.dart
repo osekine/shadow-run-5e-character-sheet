@@ -13,7 +13,7 @@ class WeaponWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return Padding(
-        padding: const EdgeInsets.all(25.0),
+        padding: const EdgeInsets.fromLTRB(25.0, 5.0, 25.0, 5.0),
         child: Container(
           color: Colors.grey,
           child: IntrinsicHeight(
@@ -89,18 +89,21 @@ class WeaponWidget extends StatelessWidget {
 }
 
 Widget FiremodeCell(Firemode firemode) {
-  return Container(
-    child: SmallText(text: firemode.toString()),
-    width: 18,
-    height: 18,
-    decoration: BoxDecoration(
-      color: Color.fromARGB(
-        255,
-        Random().nextInt(255),
-        Random().nextInt(255),
-        Random().nextInt(255),
+  return Padding(
+    padding: const EdgeInsets.all(2.0),
+    child: Container(
+      child: Center(child: SmallText(text: firemode.name.toUpperCase())),
+      width: 24,
+      height: 24,
+      decoration: BoxDecoration(
+        color: Color.fromARGB(
+          255,
+          Random().nextInt(155) + 100,
+          Random().nextInt(155) + 100,
+          Random().nextInt(155) + 100,
+        ),
+        shape: BoxShape.circle,
       ),
-      shape: BoxShape.circle,
     ),
   );
 }

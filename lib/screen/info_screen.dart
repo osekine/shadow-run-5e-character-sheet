@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:shadowrun_5e_character_sheet/model/character_model.dart';
 import 'package:shadowrun_5e_character_sheet/utility/text_widgets.dart';
 
-import '../model/info.dart';
 
 class InfoScreen extends StatefulWidget {
   const InfoScreen({super.key});
@@ -13,14 +12,15 @@ class InfoScreen extends StatefulWidget {
 }
 
 class _InfoScreenState extends State<InfoScreen> {
-  late TextEditingController _nameController;
-  late TextEditingController _raceController;
-  
+  late final TextEditingController _nameController;
+  late final TextEditingController _raceController;
+  late final TextEditingController _moneyController;
 
   @override
   void initState() {
     _nameController = TextEditingController();
     _raceController = TextEditingController();
+    _moneyController = TextEditingController();
     super.initState();
   }
 
@@ -28,6 +28,7 @@ class _InfoScreenState extends State<InfoScreen> {
   void dispose() {
     _nameController.dispose();
     _raceController.dispose();
+    _moneyController.dispose();
     super.dispose();
   }
 
@@ -36,6 +37,7 @@ class _InfoScreenState extends State<InfoScreen> {
     final model = CharacterProvider.of(context).info;
     _nameController.text = model.name ?? ' ';
     _raceController.text = model.race ?? ' ';
+    _moneyController.text = '${model.money ?? ' '}' ;
     return Column(
       children: [
         Expanded(
@@ -50,9 +52,8 @@ class _InfoScreenState extends State<InfoScreen> {
                       Expanded(
                           child: TextField(
                         controller: _nameController,
-                        onChanged: (val){
+                        onChanged: (val) {
                           model.name = _nameController.text;
-
                         },
                         onEditingComplete: () {
                           model.name = _nameController.text;
@@ -63,9 +64,8 @@ class _InfoScreenState extends State<InfoScreen> {
                       Expanded(
                           child: TextField(
                         controller: _raceController,
-                        onChanged: (val){
+                        onChanged: (val) {
                           model.race = _raceController.text;
-
                         },
                         onEditingComplete: () {
                           model.race = _raceController.text;
@@ -74,10 +74,32 @@ class _InfoScreenState extends State<InfoScreen> {
                       ))
                     ]),
               ),
-        Container(
-            child: Center(
-          child: BigText(text: '\$ ${model.money}'),
-        ))
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                             
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                       BigText(text: '\$ '),
+                      Expanded(
+                        child: TextField(
+                          controller: _moneyController,
+                          keyboardType: TextInputType.number,
+                          onChanged: (val) {
+                            model.money = int.parse(_moneyController.text.isEmpty ? '0' : _moneyController.text );
+                          },
+                          onEditingComplete: () {
+                            model.money = int.parse(_moneyController.text.isEmpty ? '0' : _moneyController.text );
+                            FocusScope.of(context).unfocus();
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

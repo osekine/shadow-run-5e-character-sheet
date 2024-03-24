@@ -21,7 +21,7 @@ class CharacterModel {
   final HealthModel health;
   final List<WeaponModel> weapons;
   final Skills skills;
-  final List<ElectronicModel> devices;
+  // final List<ElectronicModel> devices;
 
   CharacterModel({
     required this.info,
@@ -29,15 +29,15 @@ class CharacterModel {
     required this.health,
     required this.weapons,
     required this.skills,
-    required this.devices
+    // required this.devices
   });
 
   CharacterModel.start({required this.attributes}) 
       : info = InfoModel(),
         health = HealthModel(),
          weapons = List.empty(growable: true),
-        skills = Skills.start(model: attributes),
-        devices = List.empty(growable: true);
+        skills = Skills.start(model: attributes);
+        // devices = List.empty(growable: true);
 
   factory CharacterModel.fromJson(Map<String, dynamic> json) => _$CharacterModelFromJson(json);
 

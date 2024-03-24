@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Shadowrun 5e Character Sheet',
       theme: ThemeData(
         fontFamily: 'JetBrains Mono',
         colorScheme:

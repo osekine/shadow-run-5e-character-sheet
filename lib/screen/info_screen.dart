@@ -88,6 +88,9 @@ class _InfoScreenState extends State<InfoScreen> {
                           controller: _moneyController,
                           keyboardType: TextInputType.number,
                           onChanged: (val) {
+                            if (int.tryParse(_moneyController.text[_moneyController.text.length-1]) == null){
+                              _moneyController.text = _moneyController.text.substring(0, _moneyController.text.length-1);
+                            }
                             model.money = int.parse(_moneyController.text.isEmpty ? '0' : _moneyController.text );
                           },
                           onEditingComplete: () {

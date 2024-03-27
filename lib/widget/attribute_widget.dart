@@ -20,7 +20,7 @@ class _AttributeWidgetState extends State<AttributeWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.all(0.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(13),
         child: IntrinsicHeight(
@@ -34,7 +34,7 @@ class _AttributeWidgetState extends State<AttributeWidget> {
                       padding: const EdgeInsets.all(5),
                       child: SizedBox(
                           width: 85,
-                          height: 85,
+                          height: 75,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
                             child: GestureDetector(

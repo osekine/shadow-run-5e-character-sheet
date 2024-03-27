@@ -71,6 +71,5 @@ class CharacterProvider extends InheritedWidget {
   static CharacterModel of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<CharacterProvider>()!.model;
   }
-
 }
 

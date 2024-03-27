@@ -18,14 +18,9 @@ class _InfoScreenState extends State<InfoScreen> {
 
   @override
   void initState() {
-<<<<<<< HEAD
     _nameController = TextEditingController();
     _raceController = TextEditingController();
     _moneyController = TextEditingController();
-=======
-    model = CharacterProvider.of(context).info;
-    _nameController = TextEditingController(text: model.name);
->>>>>>> ed97e217cb3c42a3f6711741443b6efc86bd3ea8
     super.initState();
   }
 

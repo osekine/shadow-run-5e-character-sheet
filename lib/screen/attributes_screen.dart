@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shadowrun_5e_character_sheet/widget/treshold_widget.dart';
 
 import '../model/character_model.dart';
+import '../utility/text_widgets.dart';
 import '../widget/attribute_widget.dart';
 
 class AttributesScreen extends StatelessWidget {
@@ -9,8 +11,7 @@ class AttributesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
   final CharacterModel character = CharacterProvider.of(context);
-    return Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+    return ListView(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -48,6 +49,8 @@ class AttributesScreen extends StatelessWidget {
                 AttributeWidget(model: character.attributes.entity, color: Colors.black),
               ],
             ),
+            const Center(child: BigText(text: 'Пределы')),
+            const Expanded(child: TresholdWidget()),
           ],
         );
   }

@@ -53,6 +53,8 @@ class CharacterProvider extends InheritedWidget {
     await prefs.setString('character', jsonEncode(model.toJson()));
   }
 
+ 
+
   @override
   bool updateShouldNotify(CharacterProvider old) {
     _saveCharacter();

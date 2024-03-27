@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> ed97e217cb3c42a3f6711741443b6efc86bd3ea8
 import 'package:json_annotation/json_annotation.dart';
 
 part 'attributes_model.g.dart';
@@ -9,8 +13,12 @@ class AttributeModel {
 
   AttributeModel({required this.name, required this.value});
 
+<<<<<<< HEAD
   factory AttributeModel.fromJson(Map<String, dynamic> json) =>
       _$AttributeModelFromJson(json);
+=======
+  factory AttributeModel.fromJson(Map<String, dynamic> json) => _$AttributeModelFromJson(json);
+>>>>>>> ed97e217cb3c42a3f6711741443b6efc86bd3ea8
 
   Map<String, dynamic> toJson() => _$AttributeModelToJson(this);
 
@@ -22,6 +30,7 @@ class AttributeModel {
 
 @JsonSerializable()
 class Attributes {
+<<<<<<< HEAD
   AttributeModel strength;
   AttributeModel agility; 
   AttributeModel body;
@@ -62,6 +71,23 @@ class Attributes {
 
   factory Attributes.fromJson(Map<String, dynamic> json) =>
       _$AttributesFromJson(json);
+=======
+  final AttributeModel strength = AttributeModel(name: 'Сила', value: 1);
+  final AttributeModel agility = AttributeModel(name: 'Лов', value: 2);
+  final AttributeModel body = AttributeModel(name: 'Тело', value: 3);
+  final AttributeModel reaction = AttributeModel(name: 'Реа', value: 4);
+  final AttributeModel logic = AttributeModel(name: 'Лог', value: 5);
+  final AttributeModel intuition = AttributeModel(name: 'Инт', value: 6);
+  final AttributeModel willpower = AttributeModel(name: 'СВ', value: 1);
+  final AttributeModel charisma = AttributeModel(name: 'Хар', value: 2);
+  final AttributeModel magic = AttributeModel(name: 'Маг', value: 1);
+  final AttributeModel edge = AttributeModel(name: 'Гр', value: 6);
+  final AttributeModel entity = AttributeModel(name: 'Сущ', value: 600);
+
+  Attributes({this.strength, this.agility, this.body, this.reaction, this.logic, this.intuition, this.willpower, this.charisma, this.magic, this.edge, this.entity});
+
+  factory Attributes.fromJson(Map<String, dynamic> json) => _$AttributesFromJson(json);
+>>>>>>> ed97e217cb3c42a3f6711741443b6efc86bd3ea8
 
   Map<String, dynamic> toJson() => _$AttributesToJson(this);
 }
@@ -91,8 +117,12 @@ class MatrixAttributes {
         _dataProc = AttributeModel(name: "Обрабтка", value: dataProc),
         _firewall = AttributeModel(name: "Фаервол", value: firewall);
 
+<<<<<<< HEAD
   factory MatrixAttributes.fromJson(Map<String, dynamic> json) =>
       _$MatrixAttributesFromJson(json);
+=======
+  factory MatrixAttributes.fromJson(Map<String, dynamic> json) => _$MatrixAttributesFromJson(json);
+>>>>>>> ed97e217cb3c42a3f6711741443b6efc86bd3ea8
 
   Map<String, dynamic> toJson() => _$MatrixAttributesToJson(this);
 }

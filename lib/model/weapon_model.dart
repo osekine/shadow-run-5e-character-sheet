@@ -586,8 +586,8 @@ class MeleeWeaponModel
   final int? damage;
   final DamageType? damageType;
   final int? AP;
-  List<WeaponMod?>? mods;
-  MeleeWeaponModel({this.name, this.reach,this.accuracy, this.damage, this.damageType, this.AP, this.mods});
+  List<WeaponMod?>? mods; 
+  MeleeWeaponModel({this.name,this.accuracy, this.reach,  this.damage, this.damageType, this.AP, this.mods});
 }
 
 Map<String, MeleeWeaponModel> blades = {

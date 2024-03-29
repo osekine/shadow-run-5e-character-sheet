@@ -34,7 +34,7 @@ class _AttributeWidgetState extends State<AttributeWidget> {
                       padding: const EdgeInsets.all(5),
                       child: SizedBox(
                           width: 85,
-                          height: 75,
+                          height: 75 ,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
                             child: GestureDetector(

@@ -50,7 +50,7 @@ class AttributesScreen extends StatelessWidget {
               ],
             ),
             const Center(child: BigText(text: 'Пределы')),
-            const Expanded(child: TresholdWidget()),
+            const  TresholdWidget(),
           ],
         );
   }

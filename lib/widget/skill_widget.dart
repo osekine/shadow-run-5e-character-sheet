@@ -67,7 +67,7 @@ class _SkillWidgetState extends State<SkillWidget> {
                 padding: const EdgeInsets.all(2.0),
                 child: GestureDetector(
                     onTap: () {
-                      //TODO: hide previous snackbar
+                      ScaffoldMessenger.of(context).removeCurrentSnackBar();
                       ScaffoldMessenger.of(context).showSnackBar(RollDice.roll(
                           [widget.model.level, attrib, widget.model.bonus]));
                     },

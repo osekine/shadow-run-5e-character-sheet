@@ -1,7 +1,9 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
 class RollDice {
-  static void roll(List<int> dicepool) {
+  static SnackBar roll(List<int> dicepool) {
     int amount = 0;
     for (var i in dicepool) amount += i;
 
@@ -12,5 +14,6 @@ class RollDice {
     result += '${Random().nextInt(6) + 1}';
 
     print(result);
+    return SnackBar(content: Text(result));
   }
 }

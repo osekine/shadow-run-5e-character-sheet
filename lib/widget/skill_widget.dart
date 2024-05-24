@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shadowrun_5e_character_sheet/model/character_model.dart';
+import 'package:shadowrun_5e_character_sheet/model/features/roll_dice.dart';
 
 import '../model/skill_model.dart';
 import '../utility/text_widgets.dart';
@@ -17,16 +18,16 @@ class _SkillWidgetState extends State<SkillWidget> {
   @override
   Widget build(BuildContext context) {
     final test = CharacterProvider.of(context).attributes;
-    int attrib =0;
-    if(widget.model.attribute.name == 'Сила') attrib = test.strength.value;
-    if(widget.model.attribute.name == 'Лов') attrib = test.agility.value;
-    if(widget.model.attribute.name == 'Тело') attrib = test.body.value;
-    if(widget.model.attribute.name == 'Реа') attrib = test.reaction.value;
-    if(widget.model.attribute.name == 'Лог') attrib = test.logic.value;
-    if(widget.model.attribute.name == 'Инт') attrib = test.intuition.value;
-    if(widget.model.attribute.name == 'Воля') attrib = test.willpower.value;
-        if(widget.model.attribute.name == 'Хар') attrib = test.charisma.value;
-    if(widget.model.attribute.name == 'Маг') attrib = test.magic.value;
+    int attrib = 0;
+    if (widget.model.attribute.name == 'Сила') attrib = test.strength.value;
+    if (widget.model.attribute.name == 'Лов') attrib = test.agility.value;
+    if (widget.model.attribute.name == 'Тело') attrib = test.body.value;
+    if (widget.model.attribute.name == 'Реа') attrib = test.reaction.value;
+    if (widget.model.attribute.name == 'Лог') attrib = test.logic.value;
+    if (widget.model.attribute.name == 'Инт') attrib = test.intuition.value;
+    if (widget.model.attribute.name == 'Воля') attrib = test.willpower.value;
+    if (widget.model.attribute.name == 'Хар') attrib = test.charisma.value;
+    if (widget.model.attribute.name == 'Маг') attrib = test.magic.value;
 
     return SizedBox(
       width: 270,
@@ -39,11 +40,14 @@ class _SkillWidgetState extends State<SkillWidget> {
               flex: 4,
               child: Padding(
                 padding: const EdgeInsets.all(2.0),
-                child: widget.model.isDefault || widget.model.level > 0 ? Container(
-                    color: Colors.white,
-                    child: SmallText(text: widget.model.name)) : Container(
-                    color: Colors.black,
-                    child: SmallText(text: widget.model.name, color: Colors.white)),
+                child: widget.model.isDefault || widget.model.level > 0
+                    ? Container(
+                        color: Colors.white,
+                        child: SmallText(text: widget.model.name))
+                    : Container(
+                        color: Colors.black,
+                        child: SmallText(
+                            text: widget.model.name, color: Colors.white)),
               ),
             ),
             Flexible(
@@ -62,6 +66,11 @@ class _SkillWidgetState extends State<SkillWidget> {
               child: Padding(
                 padding: const EdgeInsets.all(2.0),
                 child: GestureDetector(
+                    onTap: () {
+                      ScaffoldMessenger.of(context).removeCurrentSnackBar();
+                      ScaffoldMessenger.of(context).showSnackBar(RollDice.roll(
+                          [widget.model.level, attrib, widget.model.bonus]));
+                    },
                     onDoubleTap: () async {
                       int? a = await showDialog(
                           context: context,
@@ -76,11 +85,9 @@ class _SkillWidgetState extends State<SkillWidget> {
                     child: Container(
                         color: Colors.white,
                         child: SmallText(
-                            text:
-                                '${widget.model.level}+${attrib}'))),
+                            text: '${widget.model.level}+${attrib}'))),
               ),
             ),
-            
           ]),
     );
   }

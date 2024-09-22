@@ -84,8 +84,8 @@ class _SkillWidgetState extends State<SkillWidget> {
                     },
                     child: Container(
                         color: Colors.white,
-                        child: SmallText(
-                            text: '${widget.model.level}+${attrib}'))),
+                        child:
+                            SmallText(text: '${widget.model.level}+$attrib'))),
               ),
             ),
           ]),
@@ -137,7 +137,7 @@ class SkillTypeWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        color: Color.fromARGB(255, 217, 217, 217),
+        color: const Color.fromARGB(255, 217, 217, 217),
         child: Column(
           children: [
             Center(

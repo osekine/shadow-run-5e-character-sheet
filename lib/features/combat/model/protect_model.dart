@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import '../../../common/model/character_model.dart';
 
 class ProtectModel {

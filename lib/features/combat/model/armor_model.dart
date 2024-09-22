@@ -45,7 +45,7 @@ class ArmorAccesory {
       required this.description,
       void Function(ArmorAccesory ac)? onAdd})
       : parent = null,
-        this.onAdd = onAdd ?? ((ArmorAccesory ac) => {});
+        onAdd = onAdd ?? ((ArmorAccesory ac) => {});
   void delete() {
     parent = null;
   }
@@ -72,16 +72,43 @@ Map<String, ArmorAccesory> fullbodyAccessories = {
       name: 'Full Body, Helmet',
       description: '+3 to rating',
       onAdd: (ac) => ac.parent?.rating += 3),
-  'fullbody chem': ArmorAccesory.start(name: 'Full Body, Chemical Seal', description: 'Full Chem immunity for 1 hour', onAdd: (ac) {}),
+  'fullbody chem': ArmorAccesory.start(
+      name: 'Full Body, Chemical Seal',
+      description: 'Full Chem immunity for 1 hour',
+      onAdd: (ac) {}),
 };
 
-Map<String, ArmorAccesory>  basicAccesories = {
-  'helmet': ArmorAccesory.start( name: 'Helmet', description: '+2 to rating', onAdd: (ac) => ac.parent?.rating += 2),
-  'ballistic shield': ArmorAccesory.start( name: 'Ballistic Shield', description: '+6 to rating', onAdd: (ac) => ac.parent?.rating += 6),
-  'chem protection': ArmorAccesory.start(name: 'Chemical Protection', description: '+rating to chem protection', onAdd: (ac) {ac.parent?.chemProtection += ac.rating;}),
-  'stun protection': ArmorAccesory.start(name: 'Nonconductivity', description: '+rating to electric damage protection', onAdd: (ac) {ac.parent?.stunProtection += ac.rating;}),
-  'fire protection': ArmorAccesory.start(name: 'Fire Resistance', description: '+rating to fire damage protection', onAdd: (ac) {ac.parent?.fireProtection += ac.rating;}),
-  'chem immunity': ArmorAccesory.start(name: 'Chemical Seal ', description: 'Full Chem Immunity for 1 hour', onAdd: (ac) {}),
+Map<String, ArmorAccesory> basicAccesories = {
+  'helmet': ArmorAccesory.start(
+      name: 'Helmet',
+      description: '+2 to rating',
+      onAdd: (ac) => ac.parent?.rating += 2),
+  'ballistic shield': ArmorAccesory.start(
+      name: 'Ballistic Shield',
+      description: '+6 to rating',
+      onAdd: (ac) => ac.parent?.rating += 6),
+  'chem protection': ArmorAccesory.start(
+      name: 'Chemical Protection',
+      description: '+rating to chem protection',
+      onAdd: (ac) {
+        ac.parent?.chemProtection += ac.rating;
+      }),
+  'stun protection': ArmorAccesory.start(
+      name: 'Nonconductivity',
+      description: '+rating to electric damage protection',
+      onAdd: (ac) {
+        ac.parent?.stunProtection += ac.rating;
+      }),
+  'fire protection': ArmorAccesory.start(
+      name: 'Fire Resistance',
+      description: '+rating to fire damage protection',
+      onAdd: (ac) {
+        ac.parent?.fireProtection += ac.rating;
+      }),
+  'chem immunity': ArmorAccesory.start(
+      name: 'Chemical Seal ',
+      description: 'Full Chem Immunity for 1 hour',
+      onAdd: (ac) {}),
 };
 
 Map<String, Map<String, ArmorAccesory>> accessoryList = {

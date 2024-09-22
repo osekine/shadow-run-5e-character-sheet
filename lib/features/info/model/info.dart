@@ -1,4 +1,4 @@
-import 'dart:math';
+// ignore_for_file: non_constant_identifier_names
 
 import '../../../common/model/character_model.dart';
 import 'package:json_annotation/json_annotation.dart';

@@ -1,12 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shadowrun_5e_character_sheet/common/data/i_repository.dart';
-import 'package:shadowrun_5e_character_sheet/features/matrix/model/electronic_model.dart';
 import 'package:shadowrun_5e_character_sheet/features/info/model/info.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/info/model/attributes_model.dart';
 import '../../features/combat/model/health_model.dart';
@@ -54,9 +50,9 @@ class CharacterProvider extends InheritedWidget {
   }
 
   @override
-  bool updateShouldNotify(CharacterProvider old) {
+  bool updateShouldNotify(CharacterProvider oldWidget) {
     _saveCharacter();
-    return model != old.model;
+    return model != oldWidget.model;
   }
 
   const CharacterProvider({

@@ -44,7 +44,7 @@ class _ChangeValueWidgetState extends State<ChangeValueWidget> {
                         value--;
                         setState(() {});
                       },
-                      child: BigText(
+                      child: const BigText(
                         text: '-',
                       )),
                   ElevatedButton(
@@ -52,7 +52,7 @@ class _ChangeValueWidgetState extends State<ChangeValueWidget> {
                         value++;
                         setState(() {});
                       },
-                      child: BigText(
+                      child: const BigText(
                         text: '+',
                       ))
                 ],

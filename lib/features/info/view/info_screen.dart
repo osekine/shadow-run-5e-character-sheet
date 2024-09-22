@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:shadowrun_5e_character_sheet/common/model/character_model.dart';
 import 'package:shadowrun_5e_character_sheet/common/widget/text_widgets.dart';
 
@@ -47,7 +46,7 @@ class _InfoScreenState extends State<InfoScreen> {
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      SmallText(text: 'Name: '),
+                      const SmallText(text: 'Name: '),
                       Expanded(
                           child: TextField(
                         controller: _nameController,
@@ -59,7 +58,7 @@ class _InfoScreenState extends State<InfoScreen> {
                           FocusScope.of(context).unfocus();
                         },
                       )),
-                      SmallText(text: 'Race: '),
+                      const SmallText(text: 'Race: '),
                       Expanded(
                           child: TextField(
                         controller: _raceController,
@@ -75,40 +74,35 @@ class _InfoScreenState extends State<InfoScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      BigText(text: '\$ '),
-                      Expanded(
-                        child: TextField(
-                          controller: _moneyController,
-                          keyboardType: TextInputType.number,
-                          onChanged: (val) {
-                            if (int.tryParse(_moneyController
-                                    .text[_moneyController.text.length - 1]) ==
-                                null) {
-                              _moneyController.text = _moneyController.text
-                                  .substring(
-                                      0, _moneyController.text.length - 1);
-                            }
-                            model.money = int.parse(
-                                _moneyController.text.isEmpty
-                                    ? '0'
-                                    : _moneyController.text);
-                          },
-                          onEditingComplete: () {
-                            model.money = int.parse(
-                                _moneyController.text.isEmpty
-                                    ? '0'
-                                    : _moneyController.text);
-                            FocusScope.of(context).unfocus();
-                          },
-                        ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const BigText(text: '\$ '),
+                    Expanded(
+                      child: TextField(
+                        controller: _moneyController,
+                        keyboardType: TextInputType.number,
+                        onChanged: (val) {
+                          if (int.tryParse(_moneyController
+                                  .text[_moneyController.text.length - 1]) ==
+                              null) {
+                            _moneyController.text = _moneyController.text
+                                .substring(0, _moneyController.text.length - 1);
+                          }
+                          model.money = int.parse(_moneyController.text.isEmpty
+                              ? '0'
+                              : _moneyController.text);
+                        },
+                        onEditingComplete: () {
+                          model.money = int.parse(_moneyController.text.isEmpty
+                              ? '0'
+                              : _moneyController.text);
+                          FocusScope.of(context).unfocus();
+                        },
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ],

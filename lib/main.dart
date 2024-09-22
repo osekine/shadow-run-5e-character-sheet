@@ -1,14 +1,11 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shadowrun_5e_character_sheet/common/data/i_repository.dart';
 import 'package:shadowrun_5e_character_sheet/common/data/sp_repository.dart';
 import 'package:shadowrun_5e_character_sheet/features/info/view/main_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import 'features/info/model/attributes_model.dart';
 import 'common/model/character_model.dart';
 
 void main() {

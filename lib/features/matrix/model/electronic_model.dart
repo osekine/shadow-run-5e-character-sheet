@@ -17,9 +17,8 @@ class ElectronicModel {
 }
 
 class Commlink extends ElectronicModel {
-  Commlink({required String name, required int rating})
+  Commlink({required super.name, required int rating})
       : super(
-            name: name,
             attributes: MatrixAttributes(
                 rating: rating,
                 attack: 0,

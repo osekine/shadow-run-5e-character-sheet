@@ -20,9 +20,10 @@ class _AttributeWidgetState extends State<AttributeWidget> {
       padding: const EdgeInsets.all(0.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(13),
+        //TODO: maybe IntrinsicHeight is none necessary
         child: IntrinsicHeight(
           child: Card(
-            color: Color.fromARGB(169, 217, 217, 217),
+            color: const Color.fromARGB(169, 217, 217, 217),
             elevation: 0,
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -49,7 +50,8 @@ class _AttributeWidgetState extends State<AttributeWidget> {
                                 }
                               },
                               child: Card(
-                                  color: Color.fromARGB(255, 255, 250, 250),
+                                  color:
+                                      const Color.fromARGB(255, 255, 250, 250),
                                   child: Center(
                                       child: BigText(
                                           text: widget.model.toString() == 'СУЩ'

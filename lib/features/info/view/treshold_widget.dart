@@ -20,12 +20,13 @@ class TresholdWidget extends StatelessWidget {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Column TresholdCell(String name, int value) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         MediumText(text: name),
-        MediumText(text: '${value}'),
+        MediumText(text: '$value'),
       ],
     );
   }

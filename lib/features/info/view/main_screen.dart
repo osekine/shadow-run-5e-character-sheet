@@ -10,7 +10,7 @@ import '../../combat/view/health_widget.dart';
 
 class MainScreen extends StatefulWidget {
   final CharacterModel model;
-  MainScreen({super.key, required this.model});
+  const MainScreen({super.key, required this.model});
 
   @override
   State<MainScreen> createState() => _MainScreenState();

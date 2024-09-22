@@ -23,13 +23,14 @@ class ProtectWidget extends StatelessWidget {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Column RowCell(String name, int value, Color color) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         MediumText(text: name),
         BigText(
-          text: '${value}',
+          text: '$value',
           color: color,
         ),
       ],

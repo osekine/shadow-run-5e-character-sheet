@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:shadowrun_5e_character_sheet/screen/main_screen.dart';
+import 'package:shadowrun_5e_character_sheet/features/info/view/main_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'model/attributes_model.dart';
-import 'model/character_model.dart';
+import 'features/info/model/attributes_model.dart';
+import 'common/model/character_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,9 +38,9 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void dispose() {
-
     super.dispose();
   }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -48,8 +48,8 @@ class _MyAppState extends State<MyApp> {
       title: 'Shadowrun 5e Character Sheet',
       theme: ThemeData(
         fontFamily: 'JetBrains Mono',
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 238, 224, 31)),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 238, 224, 31)),
         useMaterial3: true,
       ),
       home: FutureBuilder<CharacterModel>(

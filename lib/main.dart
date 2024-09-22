@@ -1,6 +1,10 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:shadowrun_5e_character_sheet/common/data/i_repository.dart';
+import 'package:shadowrun_5e_character_sheet/common/data/sp_repository.dart';
 import 'package:shadowrun_5e_character_sheet/features/info/view/main_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -8,6 +12,8 @@ import 'features/info/model/attributes_model.dart';
 import 'common/model/character_model.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  GetIt.I.registerSingleton<IRepository>(SharedPreferencesRepository());
   runApp(const MyApp());
 }
 
@@ -19,21 +25,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late final Future<CharacterModel> _character;
+  late final Future<CharacterModel?> _character;
 
   @override
   void initState() {
-    _character = _loadCharacter();
+    final repo = GetIt.I.get<IRepository>();
+    _character = repo.loadCharacter();
     super.initState();
-  }
-
-  Future<CharacterModel> _loadCharacter() async {
-    final prefs = await SharedPreferences.getInstance();
-    final json = prefs.getString('character');
-    if (json != null) {
-      return CharacterModel.fromJson(jsonDecode(json));
-    }
-    return CharacterModel.start(attributes: Attributes.start());
   }
 
   @override
@@ -41,7 +39,6 @@ class _MyAppState extends State<MyApp> {
     super.dispose();
   }
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -52,7 +49,7 @@ class _MyAppState extends State<MyApp> {
             seedColor: const Color.fromARGB(255, 238, 224, 31)),
         useMaterial3: true,
       ),
-      home: FutureBuilder<CharacterModel>(
+      home: FutureBuilder<CharacterModel?>(
         future: _character,
         builder: (context, snapshot) {
           if (snapshot.hasData) {

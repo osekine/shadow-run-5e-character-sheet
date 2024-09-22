@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:shadowrun_5e_character_sheet/common/data/i_repository.dart';
 import 'package:shadowrun_5e_character_sheet/features/matrix/model/electronic_model.dart';
 import 'package:shadowrun_5e_character_sheet/features/info/model/info.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -48,8 +50,7 @@ class CharacterProvider extends InheritedWidget {
   final CharacterModel model;
 
   Future<void> _saveCharacter() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('character', jsonEncode(model.toJson()));
+    await GetIt.I.get<IRepository>().saveCharacter(model);
   }
 
   @override

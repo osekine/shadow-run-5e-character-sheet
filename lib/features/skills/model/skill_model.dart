@@ -1,3 +1,5 @@
+import 'package:shadowrun_5e_character_sheet/features/info/model/attribute_types.dart';
+
 import '../../info/model/attributes_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -6,7 +8,7 @@ part 'skill_model.g.dart';
 @JsonSerializable()
 class SkillModel {
   final String name;
-  final AttributeModel attribute;
+  final CharacterAttributes attribute;
   int level = 0;
   int bonus = 0;
   bool isDefault = true;
@@ -58,7 +60,7 @@ class SkillTypeModel {
 
 @JsonSerializable()
 class Skills {
-  final Attributes model;
+  final Map<CharacterAttributes, AttributeModel> model;
   List<SkillTypeModel> skillTypes = [];
 
   SkillTypeModel operator [](int i) {
@@ -76,70 +78,95 @@ class Skills {
       //БОЕВЫЕ НАВЫКИ+
       SkillTypeModel(name: 'Боевые', skillGroups: [
         SkillGroupModel(name: 'Ближний', skills: [
-          SkillModel(name: 'Безоружный', attribute: model.agility),
-          SkillModel(name: 'Клинки', attribute: model.agility),
-          SkillModel(name: 'Дубинки', attribute: model.agility),
+          SkillModel(
+              name: 'Безоружный', attribute: CharacterAttributes.agility),
+          SkillModel(name: 'Клинки', attribute: CharacterAttributes.agility),
+          SkillModel(name: 'Дубинки', attribute: CharacterAttributes.agility),
         ]),
         SkillGroupModel(name: 'Огнестрел', skills: [
-          SkillModel(name: 'Автоматы', attribute: model.agility),
-          SkillModel(name: 'Пистолеты', attribute: model.agility),
-          SkillModel(name: 'Длинносвольное', attribute: model.agility),
+          SkillModel(name: 'Автоматы', attribute: CharacterAttributes.agility),
+          SkillModel(name: 'Пистолеты', attribute: CharacterAttributes.agility),
+          SkillModel(
+              name: 'Длинносвольное', attribute: CharacterAttributes.agility),
         ]),
       ], freeSkills: [
-        SkillModel(name: 'Артиллерия', attribute: model.agility),
-        SkillModel(name: 'Тяжелое оружие', attribute: model.agility),
-        SkillModel(name: 'Метание', attribute: model.agility),
-        SkillModel(name: 'Луки', attribute: model.agility),
+        SkillModel(name: 'Артиллерия', attribute: CharacterAttributes.agility),
+        SkillModel(
+            name: 'Тяжелое оружие', attribute: CharacterAttributes.agility),
+        SkillModel(name: 'Метание', attribute: CharacterAttributes.agility),
+        SkillModel(name: 'Луки', attribute: CharacterAttributes.agility),
       ]),
 
       //ФИЗИЧЕСКИЕ НАВЫКИ+
       SkillTypeModel(name: 'Физические', skillGroups: [
         SkillGroupModel(name: 'Атлетика', skills: [
-          SkillModel(name: 'Бег', attribute: model.strength),
-          SkillModel(name: 'Гимнастика', attribute: model.agility),
-          SkillModel(name: 'Плавание', attribute: model.strength),
+          SkillModel(name: 'Бег', attribute: CharacterAttributes.strength),
+          SkillModel(
+              name: 'Гимнастика', attribute: CharacterAttributes.agility),
+          SkillModel(name: 'Плавание', attribute: CharacterAttributes.strength),
         ]),
         SkillGroupModel(name: 'Природа', skills: [
-          SkillModel(name: 'Навигация', attribute: model.intuition),
-          SkillModel(name: 'Выживание', attribute: model.willpower),
-          SkillModel(name: 'Выслеживание', attribute: model.intuition),
+          SkillModel(
+              name: 'Навигация', attribute: CharacterAttributes.intuition),
+          SkillModel(
+              name: 'Выживание', attribute: CharacterAttributes.willpower),
+          SkillModel(
+              name: 'Выслеживание', attribute: CharacterAttributes.intuition),
         ]),
       ], freeSkills: [
-        SkillModel(name: 'Побег', attribute: model.agility),
-        SkillModel(name: 'Свободное падение', attribute: model.body),
-        SkillModel(name: 'Уход зза животными', attribute: model.charisma),
-        SkillModel(name: 'Проницательность', attribute: model.intuition),
-        SkillModel(name: 'Ныряние', attribute: model.body),
+        SkillModel(name: 'Побег', attribute: CharacterAttributes.agility),
+        SkillModel(
+            name: 'Свободное падение', attribute: CharacterAttributes.body),
+        SkillModel(
+            name: 'Уход зза животными',
+            attribute: CharacterAttributes.charisma),
+        SkillModel(
+            name: 'Проницательность', attribute: CharacterAttributes.intuition),
+        SkillModel(name: 'Ныряние', attribute: CharacterAttributes.body),
       ]),
 
       //СОЦИАЛЬНЫЕ НАВЫКИ+
       SkillTypeModel(name: 'Социальные', skillGroups: [
         SkillGroupModel(name: 'Притворство', skills: [
-          SkillModel(name: 'Обман', attribute: model.charisma),
-          SkillModel(name: 'Имитация', attribute: model.charisma),
-          SkillModel(name: 'Выступление', attribute: model.charisma),
+          SkillModel(name: 'Обман', attribute: CharacterAttributes.charisma),
+          SkillModel(name: 'Имитация', attribute: CharacterAttributes.charisma),
+          SkillModel(
+              name: 'Выступление', attribute: CharacterAttributes.charisma),
         ]),
         SkillGroupModel(name: 'Влияние', skills: [
-          SkillModel(name: 'Этикет', attribute: model.charisma),
-          SkillModel(name: 'Переговоры', attribute: model.charisma),
-          SkillModel(name: 'Лидерство', attribute: model.charisma),
+          SkillModel(name: 'Этикет', attribute: CharacterAttributes.charisma),
+          SkillModel(
+              name: 'Переговоры', attribute: CharacterAttributes.charisma),
+          SkillModel(
+              name: 'Лидерство', attribute: CharacterAttributes.charisma),
         ]),
       ], freeSkills: [
-        SkillModel(name: 'Преподавание', attribute: model.charisma),
-        SkillModel(name: 'Запугивание', attribute: model.charisma),
+        SkillModel(
+            name: 'Преподавание', attribute: CharacterAttributes.charisma),
+        SkillModel(
+            name: 'Запугивание', attribute: CharacterAttributes.charisma),
       ]),
 
       //МАТРИЧНЫЕ НАВЫКИ+
       SkillTypeModel(name: 'Матричные', skillGroups: [
         SkillGroupModel(name: 'Взлом', skills: [
-          SkillModel(name: 'Хакинг', attribute: model.logic),
-          SkillModel(name: 'Кибербой', attribute: model.logic),
-          SkillModel(name: 'Связь', attribute: model.logic, isDefault: false),
+          SkillModel(name: 'Хакинг', attribute: CharacterAttributes.logic),
+          SkillModel(name: 'Кибербой', attribute: CharacterAttributes.logic),
+          SkillModel(
+              name: 'Связь',
+              attribute: CharacterAttributes.logic,
+              isDefault: false),
         ]),
         SkillGroupModel(name: 'Электроника', skills: [
-          SkillModel(name: 'Компьютеры', attribute: model.logic),
-          SkillModel(name: 'Железо', attribute: model.logic, isDefault: false),
-          SkillModel(name: 'Софт', attribute: model.logic, isDefault: false),
+          SkillModel(name: 'Компьютеры', attribute: CharacterAttributes.logic),
+          SkillModel(
+              name: 'Железо',
+              attribute: CharacterAttributes.logic,
+              isDefault: false),
+          SkillModel(
+              name: 'Софт',
+              attribute: CharacterAttributes.logic,
+              isDefault: false),
         ]),
       ], freeSkills: []),
 
@@ -147,88 +174,129 @@ class Skills {
       SkillTypeModel(name: 'Инженерные', skillGroups: [
         SkillGroupModel(name: 'Биотех', skills: [
           SkillModel(
-              name: 'Кибертех', attribute: model.logic, isDefault: false),
+              name: 'Кибертех',
+              attribute: CharacterAttributes.logic,
+              isDefault: false),
           SkillModel(
-              name: 'Медицина', attribute: model.logic, isDefault: false),
-          SkillModel(name: 'Первая помощь', attribute: model.logic),
+              name: 'Медицина',
+              attribute: CharacterAttributes.logic,
+              isDefault: false),
+          SkillModel(
+              name: 'Первая помощь', attribute: CharacterAttributes.logic),
         ]),
         SkillGroupModel(name: 'Инженерия', skills: [
           SkillModel(
-              name: 'Аэро Мех', attribute: model.logic, isDefault: false),
+              name: 'Аэро Мех',
+              attribute: CharacterAttributes.logic,
+              isDefault: false),
           SkillModel(
-              name: 'Морск Мех', attribute: model.logic, isDefault: false),
+              name: 'Морск Мех',
+              attribute: CharacterAttributes.logic,
+              isDefault: false),
           SkillModel(
-              name: 'Пром Мех', attribute: model.logic, isDefault: false),
+              name: 'Пром Мех',
+              attribute: CharacterAttributes.logic,
+              isDefault: false),
           SkillModel(
-              name: 'Авто Мех', attribute: model.logic, isDefault: false),
+              name: 'Авто Мех',
+              attribute: CharacterAttributes.logic,
+              isDefault: false),
         ]),
       ], freeSkills: [
-        SkillModel(name: 'Химия', attribute: model.logic, isDefault: false),
-        SkillModel(name: 'Подделка', attribute: model.logic),
-        SkillModel(name: 'Оружейник', attribute: model.logic),
         SkillModel(
-            name: 'Ремесло', attribute: model.intuition, isDefault: false),
+            name: 'Химия',
+            attribute: CharacterAttributes.logic,
+            isDefault: false),
+        SkillModel(name: 'Подделка', attribute: CharacterAttributes.logic),
+        SkillModel(name: 'Оружейник', attribute: CharacterAttributes.logic),
         SkillModel(
-            name: 'Биотехнология', attribute: model.logic, isDefault: false),
+            name: 'Ремесло',
+            attribute: CharacterAttributes.intuition,
+            isDefault: false),
+        SkillModel(
+            name: 'Биотехнология',
+            attribute: CharacterAttributes.logic,
+            isDefault: false),
       ]),
 
       //СКРЫТНОСТЬ+
       SkillTypeModel(name: 'Скрытность', skillGroups: [
         SkillGroupModel(name: 'Незаметность', skills: [
-          SkillModel(name: 'Маскировка', attribute: model.intuition),
-          SkillModel(name: 'Скрытность', attribute: model.agility),
           SkillModel(
-              name: 'Ловкость рук', attribute: model.agility, isDefault: false),
+              name: 'Маскировка', attribute: CharacterAttributes.intuition),
+          SkillModel(
+              name: 'Скрытность', attribute: CharacterAttributes.agility),
+          SkillModel(
+              name: 'Ловкость рук',
+              attribute: CharacterAttributes.agility,
+              isDefault: false),
         ]),
       ], freeSkills: [
         SkillModel(
-            name: 'Взлом замков', attribute: model.agility, isDefault: false),
+            name: 'Взлом замков',
+            attribute: CharacterAttributes.agility,
+            isDefault: false),
       ]),
 
       //ВОЖДЕНИЕ+
       SkillTypeModel(name: 'Вождение', skillGroups: [], freeSkills: [
-        SkillModel(name: 'Автомобили', attribute: model.reaction),
-        SkillModel(name: 'Корабли', attribute: model.reaction),
+        SkillModel(name: 'Автомобили', attribute: CharacterAttributes.reaction),
+        SkillModel(name: 'Корабли', attribute: CharacterAttributes.reaction),
         SkillModel(
-            name: 'Шагатели', attribute: model.reaction, isDefault: false),
+            name: 'Шагатели',
+            attribute: CharacterAttributes.reaction,
+            isDefault: false),
         SkillModel(
-            name: 'Самолеты', attribute: model.reaction, isDefault: false),
-        SkillModel(name: 'Космос', attribute: model.reaction, isDefault: false),
+            name: 'Самолеты',
+            attribute: CharacterAttributes.reaction,
+            isDefault: false),
+        SkillModel(
+            name: 'Космос',
+            attribute: CharacterAttributes.reaction,
+            isDefault: false),
       ]),
 
       //МАГИЧЕСКИЕ НАВЫКИ+
       SkillTypeModel(name: 'Магические', skillGroups: [
         SkillGroupModel(name: 'Зачарование', skills: [
-          SkillModel(name: 'Алхимия', attribute: model.magic),
-          SkillModel(name: 'Артефакты', attribute: model.magic),
-          SkillModel(name: 'Освобождение', attribute: model.magic),
+          SkillModel(name: 'Алхимия', attribute: CharacterAttributes.magic),
+          SkillModel(name: 'Артефакты', attribute: CharacterAttributes.magic),
+          SkillModel(
+              name: 'Освобождение', attribute: CharacterAttributes.magic),
         ]),
         SkillGroupModel(name: 'Призыв', skills: [
-          SkillModel(name: 'Связывание', attribute: model.magic),
-          SkillModel(name: 'Призыв', attribute: model.magic),
-          SkillModel(name: 'Изгнание', attribute: model.magic),
+          SkillModel(name: 'Связывание', attribute: CharacterAttributes.magic),
+          SkillModel(name: 'Призыв', attribute: CharacterAttributes.magic),
+          SkillModel(name: 'Изгнание', attribute: CharacterAttributes.magic),
         ]),
         SkillGroupModel(name: 'Колдовство', skills: [
-          SkillModel(name: 'Чародейство', attribute: model.magic),
-          SkillModel(name: 'Контрчародейсво', attribute: model.magic),
-          SkillModel(name: 'Ритуалы', attribute: model.magic),
+          SkillModel(name: 'Чародейство', attribute: CharacterAttributes.magic),
+          SkillModel(
+              name: 'Контрчародейсво', attribute: CharacterAttributes.magic),
+          SkillModel(name: 'Ритуалы', attribute: CharacterAttributes.magic),
         ]),
       ], freeSkills: [
         SkillModel(
             name: 'Астральный бой',
-            attribute: model.willpower,
+            attribute: CharacterAttributes.willpower,
             isDefault: false),
         SkillModel(
-            name: 'Чувствование', attribute: model.intuition, isDefault: false),
-        SkillModel(name: 'Аркана', attribute: model.logic, isDefault: false),
+            name: 'Чувствование',
+            attribute: CharacterAttributes.intuition,
+            isDefault: false),
+        SkillModel(
+            name: 'Аркана',
+            attribute: CharacterAttributes.logic,
+            isDefault: false),
       ]),
 
       //РЕЗОНАНС
       SkillTypeModel(name: 'Резонанс', skillGroups: [
         SkillGroupModel(name: 'Поручение', skills: [
-          SkillModel(name: 'Компиляция', attribute: model.magic),
-          SkillModel(name: 'Декомпиляция', attribute: model.magic),
-          SkillModel(name: 'Регистрация', attribute: model.magic),
+          SkillModel(name: 'Компиляция', attribute: CharacterAttributes.magic),
+          SkillModel(
+              name: 'Декомпиляция', attribute: CharacterAttributes.magic),
+          SkillModel(name: 'Регистрация', attribute: CharacterAttributes.magic),
         ]),
       ], freeSkills: []),
     ];

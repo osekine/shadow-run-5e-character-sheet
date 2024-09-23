@@ -1,5 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:shadowrun_5e_character_sheet/features/info/model/attribute_types.dart';
+
 import '../../../common/model/character_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -37,13 +39,14 @@ class InitiativeModel {
   late int astral;
 
   InitiativeModel({required this.model}) {
-    physical =
-        model.attributes.reaction.value + model.attributes.intuition.value;
-    astral = model.attributes.intuition.value * 2;
-    AR = model.attributes.reaction.value + model.attributes.intuition.value;
+    physical = model.attributes[CharacterAttributes.reaction]!.value +
+        model.attributes[CharacterAttributes.intuition]!.value;
+    astral = model.attributes[CharacterAttributes.intuition]!.value * 2;
+    AR = model.attributes[CharacterAttributes.reaction]!.value +
+        model.attributes[CharacterAttributes.intuition]!.value;
 
     //TODO: add matrix rating of device
-    coldSim = model.attributes.logic.value;
-    hotSim = model.attributes.logic.value;
+    coldSim = model.attributes[CharacterAttributes.logic]!.value;
+    hotSim = model.attributes[CharacterAttributes.logic]!.value;
   }
 }

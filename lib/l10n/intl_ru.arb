@@ -1,0 +1,21 @@
+{
+    "strength": "Сила",
+    "agility": "Лов",
+    "body": "Тело",
+    "intuition": "Инт",
+    "willpower": "Воля",
+    "charisma": "Хар",
+    "logic": "Лог",
+    "reaction": "Реа",
+    "magic": "Маг",
+    "entity": "Сущ",
+    "edge": "Грань",
+    "navMain": "Главная",
+    "navInfo": "Информация",
+    "navCombat": "Бой",
+    "navMagic": "Магия",
+    "navMatrix": "Матрица",
+    "navSettings": "Настройки",
+    "navAbout": "О программе",
+    "navLogout": "Выход"
+}

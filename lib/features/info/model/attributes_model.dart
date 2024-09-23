@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:json_annotation/json_annotation.dart';
+import 'package:shadowrun_5e_character_sheet/features/info/model/attribute_types.dart';
 
 import '../../../common/model/character_model.dart';
 
@@ -41,18 +42,19 @@ class Attributes {
   AttributeModel edge;
   AttributeModel entity;
 
-  Attributes(
-      {required this.strength,
-      required this.agility,
-      required this.body,
-      required this.reaction,
-      required this.logic,
-      required this.intuition,
-      required this.willpower,
-      required this.charisma,
-      required this.magic,
-      required this.edge,
-      required this.entity});
+  Attributes({
+    required this.strength,
+    required this.agility,
+    required this.body,
+    required this.reaction,
+    required this.logic,
+    required this.intuition,
+    required this.willpower,
+    required this.charisma,
+    required this.magic,
+    required this.edge,
+    required this.entity,
+  });
 
   Attributes.start()
       : strength = AttributeModel(name: "Сила", value: 1),
@@ -105,27 +107,26 @@ class MatrixAttributes {
 }
 
 class TresholdModel {
-  final CharacterModel model;
+  final Map<CharacterAttributes, AttributeModel> attributes;
   late int physical;
   late int mental;
   late int social;
   late int astral;
 
-  TresholdModel({required this.model}) {
-    var attrib = model.attributes;
-    physical = ((attrib.strength.value * 2 +
-                attrib.body.value +
-                attrib.reaction.value) /
+  TresholdModel({required this.attributes}) {
+    physical = ((attributes[CharacterAttributes.strength]!.value * 2 +
+                attributes[CharacterAttributes.body]!.value +
+                attributes[CharacterAttributes.reaction]!.value) /
             3)
         .ceil();
-    mental = ((attrib.logic.value * 2 +
-                attrib.willpower.value +
-                attrib.intuition.value) /
+    mental = ((attributes[CharacterAttributes.logic]!.value * 2 +
+                attributes[CharacterAttributes.willpower]!.value +
+                attributes[CharacterAttributes.intuition]!.value) /
             3)
         .ceil();
-    social = ((attrib.charisma.value * 2 +
-                attrib.willpower.value +
-                (attrib.entity.value / 100).floor()) /
+    social = ((attributes[CharacterAttributes.charisma]!.value * 2 +
+                attributes[CharacterAttributes.willpower]!.value +
+                (attributes[CharacterAttributes.entity]!.value / 100).floor()) /
             3)
         .ceil();
     astral = max(mental, social);

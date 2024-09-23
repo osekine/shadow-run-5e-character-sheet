@@ -10,12 +10,16 @@ AttributeModel _$AttributeModelFromJson(Map<String, dynamic> json) =>
     AttributeModel(
       name: json['name'] as String,
       value: json['value'] as int,
+      min: json['min'] as int? ?? 0,
+      max: json['max'] as int? ?? 6,
     );
 
 Map<String, dynamic> _$AttributeModelToJson(AttributeModel instance) =>
     <String, dynamic>{
       'name': instance.name,
       'value': instance.value,
+      'max': instance.max,
+      'min': instance.min,
     };
 
 Attributes _$AttributesFromJson(Map<String, dynamic> json) => Attributes(

@@ -1,3 +1,5 @@
+import 'package:shadowrun_5e_character_sheet/features/info/model/attribute_types.dart';
+
 import '../../../common/model/character_model.dart';
 
 class ProtectModel {
@@ -10,7 +12,7 @@ class ProtectModel {
   int bonus = 0;
 
   ProtectModel({required this.model}) {
-    _attrib = model.attributes.body.value;
+    _attrib = model.attributes[CharacterAttributes.body]!.value;
     _armor = 0;
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:shadowrun_5e_character_sheet/features/info/model/attributes_model.dart';
+import 'package:shadowrun_5e_character_sheet/generated/l10n.dart';
 
 import '../../../common/widget/text_widgets.dart';
 import '../../../common/widget/chage_value_wiget.dart';
@@ -38,10 +40,14 @@ class _AttributeWidgetState extends State<AttributeWidget> {
                             child: GestureDetector(
                               onDoubleTap: () async {
                                 int? a = await showDialog(
-                                    context: context,
-                                    builder: ((context) => ChangeValueWidget(
+                                  context: context,
+                                  builder: ((context) => ChangeValueWidget(
                                         value: widget.model.value,
-                                        title: widget.model.toString())));
+                                        title: Intl.message(
+                                            widget.model.toString(),
+                                            name: widget.model.toString()),
+                                      )),
+                                );
                                 if (a != null) {
                                   widget.model.value = a;
                                   setState(

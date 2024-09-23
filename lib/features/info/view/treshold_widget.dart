@@ -9,7 +9,8 @@ class TresholdWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = TresholdModel(model: CharacterProvider.of(context));
+    final model =
+        TresholdModel(attributes: CharacterProvider.of(context).attributes);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [

@@ -1,0 +1,21 @@
+{
+    "strength": "Str",
+    "agility": "Agl",
+    "body": "Body",
+    "intuition": "Int",
+    "willpower": "WP",
+    "charisma": "Char",
+    "logic": "Log",
+    "reaction": "Rea",
+    "magic": "Mag",
+    "entity": "Ent",
+    "edge": "Edge",
+    "navMain": "Main",
+    "navInfo": "Infi",
+    "navCombat": "Combat",
+    "navMagic": "Magic",
+    "navMatrix": "Matrix",
+    "navSettings": "Settings",
+    "navAbout": "About",
+    "navLogout": "Logout"
+}

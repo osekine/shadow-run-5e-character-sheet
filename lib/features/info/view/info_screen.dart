@@ -16,10 +16,10 @@ class _InfoScreenState extends State<InfoScreen> {
 
   @override
   void initState() {
+    super.initState();
     _nameController = TextEditingController();
     _raceController = TextEditingController();
     _moneyController = TextEditingController();
-    super.initState();
   }
 
   @override
@@ -84,9 +84,10 @@ class _InfoScreenState extends State<InfoScreen> {
                         controller: _moneyController,
                         keyboardType: TextInputType.number,
                         onChanged: (val) {
-                          if (int.tryParse(_moneyController
-                                  .text[_moneyController.text.length - 1]) ==
-                              null) {
+                          if (_moneyController.text.isNotEmpty &&
+                              int.tryParse(_moneyController.text[
+                                      _moneyController.text.length - 1]) ==
+                                  null) {
                             _moneyController.text = _moneyController.text
                                 .substring(0, _moneyController.text.length - 1);
                           }

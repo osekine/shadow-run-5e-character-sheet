@@ -1,3 +1,4 @@
+// ignore_for_file: non_constant_identifier_names
 
 import 'package:json_annotation/json_annotation.dart';
 
@@ -20,20 +21,20 @@ class WeaponModel {
   final int? recoil;
   List<WeaponMod?>? mods;
 
-  WeaponModel({
-    required this.damageType,
-    required this.name,
-    required this.type,
-    required this.accuracy,
-    required this.damage,
-    required this.AP,
-    required this.magazine,
-    required this.recoil,
-    required this.firemode,
-    this.mods
-  });
+  WeaponModel(
+      {required this.damageType,
+      required this.name,
+      required this.type,
+      required this.accuracy,
+      required this.damage,
+      required this.AP,
+      required this.magazine,
+      required this.recoil,
+      required this.firemode,
+      this.mods});
 
-  factory WeaponModel.fromJson(Map<String, dynamic> json) => _$WeaponModelFromJson(json);
+  factory WeaponModel.fromJson(Map<String, dynamic> json) =>
+      _$WeaponModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$WeaponModelToJson(this);
 }
@@ -45,7 +46,8 @@ class WeaponMod {
 
   WeaponMod({this.name, this.description});
 
-  factory WeaponMod.fromJson(Map<String, dynamic> json) => _$WeaponModFromJson(json);
+  factory WeaponMod.fromJson(Map<String, dynamic> json) =>
+      _$WeaponModFromJson(json);
 
   Map<String, dynamic> toJson() => _$WeaponModToJson(this);
 }
@@ -531,7 +533,7 @@ Map<String, WeaponModel> launchers = {
       magazine: 1,
       recoil: 0,
       firemode: [Firemode.ss]),
-    'Krime': WeaponModel(
+  'Krime': WeaponModel(
       name: 'Krime Cannon',
       type: 'Laucher',
       accuracy: 4,
@@ -541,7 +543,7 @@ Map<String, WeaponModel> launchers = {
       magazine: 6,
       recoil: 0,
       firemode: [Firemode.sa]),
-    'Onotari': WeaponModel(
+  'Onotari': WeaponModel(
       name: 'Onotari Interceptor',
       type: 'Laucher',
       accuracy: 4,
@@ -551,7 +553,7 @@ Map<String, WeaponModel> launchers = {
       magazine: 2,
       recoil: 0,
       firemode: [Firemode.ss]),
-    'Panther': WeaponModel(
+  'Panther': WeaponModel(
       name: 'Panther XXL',
       type: 'Laucher',
       accuracy: 4,
@@ -577,160 +579,148 @@ Map<String, Map<String, WeaponModel>> weaponList = {
   'Launchers': launchers
 };
 
-
-class MeleeWeaponModel
-{
+class MeleeWeaponModel {
   final String? name;
   final int? accuracy;
   final int? reach;
   final int? damage;
   final DamageType? damageType;
   final int? AP;
-  List<WeaponMod?>? mods; 
-  MeleeWeaponModel({this.name,this.accuracy, this.reach,  this.damage, this.damageType, this.AP, this.mods});
+  List<WeaponMod?>? mods;
+  MeleeWeaponModel(
+      {this.name,
+      this.accuracy,
+      this.reach,
+      this.damage,
+      this.damageType,
+      this.AP,
+      this.mods});
 }
 
 Map<String, MeleeWeaponModel> blades = {
   'Axe': MeleeWeaponModel(
-    name: 'Combat Axe',
-    accuracy: 4,
-    reach: 2,
-    damage: 5,
-    damageType: DamageType.flesh,
-    AP: -4
-  ),
+      name: 'Combat Axe',
+      accuracy: 4,
+      reach: 2,
+      damage: 5,
+      damageType: DamageType.flesh,
+      AP: -4),
   'CombatKnife': MeleeWeaponModel(
-    name: 'Combat Knife',
-    accuracy: 6,
-    reach: 0,
-    damage: 2,
-    damageType: DamageType.flesh,
-    AP: -3
-  ),
+      name: 'Combat Knife',
+      accuracy: 6,
+      reach: 0,
+      damage: 2,
+      damageType: DamageType.flesh,
+      AP: -3),
   'Mantis': MeleeWeaponModel(
-    name: 'Forearm Snapblades',
-    accuracy: 4,
-    reach: 0,
-    damage: 2,
-    damageType: DamageType.flesh,
-    AP: -2
-  ),
+      name: 'Forearm Snapblades',
+      accuracy: 4,
+      reach: 0,
+      damage: 2,
+      damageType: DamageType.flesh,
+      AP: -2),
   'Katana': MeleeWeaponModel(
-    name: 'Katana',
-    accuracy: 7,
-    reach: 1,
-    damage: 3,
-    damageType: DamageType.flesh,
-    AP: -3
-  ),
+      name: 'Katana',
+      accuracy: 7,
+      reach: 1,
+      damage: 3,
+      damageType: DamageType.flesh,
+      AP: -3),
   'Knife': MeleeWeaponModel(
-    name: 'Knife',
-    accuracy: 5,
-    reach: 0,
-    damage: 1,
-    damageType: DamageType.flesh,
-    AP: -1
-  ),
+      name: 'Knife',
+      accuracy: 5,
+      reach: 0,
+      damage: 1,
+      damageType: DamageType.flesh,
+      AP: -1),
   'Pole': MeleeWeaponModel(
-    name: 'Pole Arm',
-    accuracy: 5,
-    reach: 3,
-    damage: 3,
-    damageType: DamageType.flesh,
-    AP: -2
-  ),
+      name: 'Pole Arm',
+      accuracy: 5,
+      reach: 3,
+      damage: 3,
+      damageType: DamageType.flesh,
+      AP: -2),
   'EmergncyKnife': MeleeWeaponModel(
-    name: 'Emergency Knife',
-    accuracy: 5,
-    reach: 0,
-    damage: 2,
-    damageType: DamageType.flesh,
-    AP: -1
-  ),
+      name: 'Emergency Knife',
+      accuracy: 5,
+      reach: 0,
+      damage: 2,
+      damageType: DamageType.flesh,
+      AP: -1),
   'Sword': MeleeWeaponModel(
-    name: 'Sword',
-    accuracy: 5,
-    reach: 1,
-    damage: 3,
-    damageType: DamageType.flesh,
-    AP: -2
-  ),
+      name: 'Sword',
+      accuracy: 5,
+      reach: 1,
+      damage: 3,
+      damageType: DamageType.flesh,
+      AP: -2),
 };
 Map<String, MeleeWeaponModel> clubs = {
   'Club': MeleeWeaponModel(
-    name: 'Club',
-    accuracy: 4,
-    reach: 1,
-    damage: 3,
-    damageType: DamageType.flesh,
-    AP: 0
-  ),
+      name: 'Club',
+      accuracy: 4,
+      reach: 1,
+      damage: 3,
+      damageType: DamageType.flesh,
+      AP: 0),
   'Baton': MeleeWeaponModel(
-    name: 'Extendable Baton',
-    accuracy: 5,
-    reach: 1,
-    damage: 2,
-    damageType: DamageType.flesh,
-    AP: 0
-  ),
+      name: 'Extendable Baton',
+      accuracy: 5,
+      reach: 1,
+      damage: 2,
+      damageType: DamageType.flesh,
+      AP: 0),
   'Sap': MeleeWeaponModel(
-    name: 'Sap',
-    accuracy: 5,
-    reach: 0,
-    damage: 2,
-    damageType: DamageType.flesh,
-    AP: 0
-  ),
+      name: 'Sap',
+      accuracy: 5,
+      reach: 0,
+      damage: 2,
+      damageType: DamageType.flesh,
+      AP: 0),
   'Staff': MeleeWeaponModel(
-    name: 'Stuff',
-    accuracy: 6,
-    reach: 2,
-    damage: 3,
-    damageType: DamageType.flesh,
-    AP: 0
-  ),
+      name: 'Stuff',
+      accuracy: 6,
+      reach: 2,
+      damage: 3,
+      damageType: DamageType.flesh,
+      AP: 0),
   'StunBaton': MeleeWeaponModel(
-    name: 'Stun Baton',
-    accuracy: 4,
-    reach: 1,
-    damage: 9,
-    damageType: DamageType.stun,
-    AP: -5
-  ),
+      name: 'Stun Baton',
+      accuracy: 4,
+      reach: 1,
+      damage: 9,
+      damageType: DamageType.stun,
+      AP: -5),
   'TelescopingStuff': MeleeWeaponModel(
-    name: 'Telescoping Stuff',
-    accuracy: 4,
-    reach: 2,
-    damage: 2,
-    damageType: DamageType.flesh,
-    AP: 0
-  ),
+      name: 'Telescoping Stuff',
+      accuracy: 4,
+      reach: 2,
+      damage: 2,
+      damageType: DamageType.flesh,
+      AP: 0),
 };
 Map<String, MeleeWeaponModel> other = {
   'Knucks': MeleeWeaponModel(
-    name: 'Knucks',
-    accuracy: null,
-    reach: 0,
-    damage: 1,
-    damageType: DamageType.flesh,
-    AP: 0
-  ),
+      name: 'Knucks',
+      accuracy: null,
+      reach: 0,
+      damage: 1,
+      damageType: DamageType.flesh,
+      AP: 0),
   'Mono': MeleeWeaponModel(
-    name: 'Monofilament Whip',
-    accuracy: 5,
-    reach: 2,
-    damage: 12,
-    damageType: DamageType.flesh,
-    AP: -8
-  ),
+      name: 'Monofilament Whip',
+      accuracy: 5,
+      reach: 2,
+      damage: 12,
+      damageType: DamageType.flesh,
+      AP: -8),
   'ShockGloves': MeleeWeaponModel(
-    name: 'Shock Gloves',
-    accuracy: null,
-    reach: 0,
-    damage: 8,
-    damageType: DamageType.stun,
-    AP: -5
-  ),
+      name: 'Shock Gloves',
+      accuracy: null,
+      reach: 0,
+      damage: 8,
+      damageType: DamageType.stun,
+      AP: -5),
 };
 
 Map<String, Map<String, MeleeWeaponModel>> meleeWeapons = {
@@ -738,4 +728,3 @@ Map<String, Map<String, MeleeWeaponModel>> meleeWeapons = {
   'Clubs': clubs,
   'Other': other
 };
-

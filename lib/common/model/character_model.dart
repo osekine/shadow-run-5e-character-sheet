@@ -43,6 +43,12 @@ class CharacterModel {
 }
 
 class CharacterProvider extends InheritedWidget {
+  const CharacterProvider({
+    super.key,
+    required this.model,
+    required super.child,
+  });
+
   final CharacterModel model;
 
   Future<void> _saveCharacter() async {
@@ -54,12 +60,6 @@ class CharacterProvider extends InheritedWidget {
     _saveCharacter();
     return model != oldWidget.model;
   }
-
-  const CharacterProvider({
-    super.key,
-    required this.model,
-    required super.child,
-  });
 
   static CharacterModel of(BuildContext context) {
     return context

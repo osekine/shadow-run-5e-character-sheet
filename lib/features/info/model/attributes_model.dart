@@ -10,8 +10,11 @@ part 'attributes_model.g.dart';
 class AttributeModel {
   final String name;
   int value;
+  int max;
+  int min;
 
-  AttributeModel({required this.name, required this.value});
+  AttributeModel(
+      {required this.name, required this.value, this.min = 0, this.max = 6});
 
   factory AttributeModel.fromJson(Map<String, dynamic> json) =>
       _$AttributeModelFromJson(json);
@@ -62,7 +65,7 @@ class Attributes {
         charisma = AttributeModel(name: "Хар", value: 1),
         magic = AttributeModel(name: "Маг", value: 0),
         edge = AttributeModel(name: "Грань", value: 6),
-        entity = AttributeModel(name: "Сущ", value: 600);
+        entity = AttributeModel(name: "Сущ", value: 600, max: 600);
 
   factory Attributes.fromJson(Map<String, dynamic> json) =>
       _$AttributesFromJson(json);

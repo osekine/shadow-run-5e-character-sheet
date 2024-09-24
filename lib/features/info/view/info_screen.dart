@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shadowrun_5e_character_sheet/common/model/character_model.dart';
-import 'package:shadowrun_5e_character_sheet/common/widget/text_widgets.dart';
+import 'package:shadowrun_5e_character_sheet/common/view/text_widgets.dart';
 
 class InfoScreen extends StatefulWidget {
   const InfoScreen({super.key});
@@ -16,10 +16,10 @@ class _InfoScreenState extends State<InfoScreen> {
 
   @override
   void initState() {
+    super.initState();
     _nameController = TextEditingController();
     _raceController = TextEditingController();
     _moneyController = TextEditingController();
-    super.initState();
   }
 
   @override
@@ -84,9 +84,10 @@ class _InfoScreenState extends State<InfoScreen> {
                         controller: _moneyController,
                         keyboardType: TextInputType.number,
                         onChanged: (val) {
-                          if (int.tryParse(_moneyController
-                                  .text[_moneyController.text.length - 1]) ==
-                              null) {
+                          if (_moneyController.text.isNotEmpty &&
+                              int.tryParse(_moneyController.text[
+                                      _moneyController.text.length - 1]) ==
+                                  null) {
                             _moneyController.text = _moneyController.text
                                 .substring(0, _moneyController.text.length - 1);
                           }

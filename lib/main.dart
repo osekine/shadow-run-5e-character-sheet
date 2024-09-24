@@ -1,12 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shadowrun_5e_character_sheet/common/data/i_repository.dart';
 import 'package:shadowrun_5e_character_sheet/common/data/sp_repository.dart';
 import 'package:shadowrun_5e_character_sheet/features/info/view/main_screen.dart';
 
 import 'common/model/character_model.dart';
+import 'generated/l10n.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +42,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Shadowrun 5e Character Sheet',
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        S.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
       theme: ThemeData(
         fontFamily: 'JetBrains Mono',
         colorScheme: ColorScheme.fromSeed(

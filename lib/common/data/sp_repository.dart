@@ -27,7 +27,8 @@ class SharedPreferencesRepository implements IRepository {
     //return a default character if there is no local data
     return json != null
         ? CharacterModel.fromJson(jsonDecode(json))
-        : CharacterModel.start(attributes: Attributes.start());
+        // TODO: change later
+        : CharacterModel.start();
   }
 
   @override

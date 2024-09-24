@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shadowrun_5e_character_sheet/common/model/character_model.dart';
-import 'package:shadowrun_5e_character_sheet/common/widget/roll_dice.dart';
+import 'package:shadowrun_5e_character_sheet/common/view/roll_dice.dart';
 
 import '../model/skill_model.dart';
-import '../../../common/widget/text_widgets.dart';
-import '../../../common/widget/chage_value_wiget.dart';
+import '../../../common/view/text_widgets.dart';
+import '../../../common/view/chage_value_wiget.dart';
 
 class SkillWidget extends StatefulWidget {
   final SkillModel model;
@@ -18,17 +18,9 @@ class _SkillWidgetState extends State<SkillWidget> {
   @override
   Widget build(BuildContext context) {
     final test = CharacterProvider.of(context).attributes;
-    int attrib = 0;
-    if (widget.model.attribute.name == 'Сила') attrib = test.strength.value;
-    if (widget.model.attribute.name == 'Лов') attrib = test.agility.value;
-    if (widget.model.attribute.name == 'Тело') attrib = test.body.value;
-    if (widget.model.attribute.name == 'Реа') attrib = test.reaction.value;
-    if (widget.model.attribute.name == 'Лог') attrib = test.logic.value;
-    if (widget.model.attribute.name == 'Инт') attrib = test.intuition.value;
-    if (widget.model.attribute.name == 'Воля') attrib = test.willpower.value;
-    if (widget.model.attribute.name == 'Хар') attrib = test.charisma.value;
-    if (widget.model.attribute.name == 'Маг') attrib = test.magic.value;
-
+    final skillModel = widget.model;
+    int attrib = test[skillModel.attribute]?.value ?? 0;
+    final isKnown = skillModel.isDefault || skillModel.level > 0;
     return SizedBox(
       width: 270,
       child: Flex(
@@ -36,20 +28,17 @@ class _SkillWidgetState extends State<SkillWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Flexible(
-              fit: FlexFit.tight,
-              flex: 4,
-              child: Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: widget.model.isDefault || widget.model.level > 0
-                    ? Container(
-                        color: Colors.white,
-                        child: SmallText(text: widget.model.name))
-                    : Container(
-                        color: Colors.black,
-                        child: SmallText(
-                            text: widget.model.name, color: Colors.white)),
-              ),
-            ),
+                fit: FlexFit.tight,
+                flex: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: Container(
+                    color: isKnown ? Colors.white : Colors.black,
+                    child: SmallText(
+                        text: translateMessage(skillModel.name),
+                        color: isKnown ? Colors.black : Colors.white),
+                  ),
+                )),
             Flexible(
               fit: FlexFit.tight,
               flex: 1,
@@ -57,7 +46,8 @@ class _SkillWidgetState extends State<SkillWidget> {
                 padding: const EdgeInsets.all(2.0),
                 child: Container(
                     color: Colors.white,
-                    child: SmallText(text: widget.model.attribute.toString())),
+                    child: SmallText(
+                        text: translateMessage(skillModel.attribute.name))),
               ),
             ),
             Flexible(
@@ -69,23 +59,21 @@ class _SkillWidgetState extends State<SkillWidget> {
                     onTap: () {
                       ScaffoldMessenger.of(context).removeCurrentSnackBar();
                       ScaffoldMessenger.of(context).showSnackBar(RollDice.roll(
-                          [widget.model.level, attrib, widget.model.bonus]));
+                          [skillModel.level, attrib, skillModel.bonus]));
                     },
                     onDoubleTap: () async {
                       int? a = await showDialog(
                           context: context,
                           builder: (context) => ChangeValueWidget(
-                              value: widget.model.level,
-                              title: widget.model.name));
+                              value: skillModel.level, title: skillModel.name));
                       if (a != null) {
-                        widget.model.level = a;
+                        skillModel.level = a;
                         setState(() {});
                       }
                     },
                     child: Container(
                         color: Colors.white,
-                        child:
-                            SmallText(text: '${widget.model.level}+$attrib'))),
+                        child: SmallText(text: '${skillModel.level}+$attrib'))),
               ),
             ),
           ]),

@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:shadowrun_5e_character_sheet/common/model/character_model.dart';
 
 import '../model/attributes_model.dart';
-import '../../../common/widget/text_widgets.dart';
+import '../../../common/view/text_widgets.dart';
 
 class TresholdWidget extends StatelessWidget {
   const TresholdWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final model = TresholdModel(model: CharacterProvider.of(context));
+    final model =
+        TresholdModel(attributes: CharacterProvider.of(context).attributes);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [

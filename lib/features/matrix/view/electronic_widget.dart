@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../model/electronic_model.dart';
-import '../../../common/widget/text_widgets.dart';
+import '../../../common/view/text_widgets.dart';
 
 class ElectronicWidget extends StatelessWidget {
   final ElectronicModel model;

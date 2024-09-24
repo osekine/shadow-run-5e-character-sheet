@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shadowrun_5e_character_sheet/features/info/model/attribute_types.dart';
 import 'package:shadowrun_5e_character_sheet/features/info/view/treshold_widget.dart';
 
 import '../../../common/model/character_model.dart';
-import '../../../common/widget/text_widgets.dart';
+import '../../../common/view/text_widgets.dart';
 import 'attribute_widget.dart';
 
 class AttributesScreen extends StatelessWidget {
@@ -17,47 +18,58 @@ class AttributesScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             AttributeWidget(
-                model: character.attributes.body, color: Colors.red),
+                model: character.attributes[CharacterAttributes.body]!,
+                color: Colors.red),
             AttributeWidget(
-                model: character.attributes.willpower, color: Colors.blue),
+                model: character.attributes[CharacterAttributes.willpower]!,
+                color: Colors.blue),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             AttributeWidget(
-                model: character.attributes.strength, color: Colors.red),
+                model: character.attributes[CharacterAttributes.strength]!,
+                color: Colors.red),
             AttributeWidget(
-                model: character.attributes.logic, color: Colors.blue),
+                model: character.attributes[CharacterAttributes.logic]!,
+                color: Colors.blue),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             AttributeWidget(
-                model: character.attributes.agility, color: Colors.red),
+                model: character.attributes[CharacterAttributes.agility]!,
+                color: Colors.red),
             AttributeWidget(
-                model: character.attributes.intuition, color: Colors.blue),
+                model: character.attributes[CharacterAttributes.intuition]!,
+                color: Colors.blue),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             AttributeWidget(
-                model: character.attributes.reaction, color: Colors.red),
+                model: character.attributes[CharacterAttributes.reaction]!,
+                color: Colors.red),
             AttributeWidget(
-                model: character.attributes.charisma, color: Colors.blue),
+                model: character.attributes[CharacterAttributes.charisma]!,
+                color: Colors.blue),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             AttributeWidget(
-                model: character.attributes.edge, color: Colors.black),
+                model: character.attributes[CharacterAttributes.edge]!,
+                color: Colors.black),
             AttributeWidget(
-                model: character.attributes.magic, color: Colors.black),
+                model: character.attributes[CharacterAttributes.magic]!,
+                color: Colors.black),
             AttributeWidget(
-                model: character.attributes.entity, color: Colors.black),
+                model: character.attributes[CharacterAttributes.entity]!,
+                color: Colors.black),
           ],
         ),
         const Center(child: BigText(text: 'Пределы')),

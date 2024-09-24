@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class BigText extends StatelessWidget {
   final String _text;
@@ -12,7 +13,10 @@ class BigText extends StatelessWidget {
     return Text(
       _text.toUpperCase(),
       style: TextStyle(
-          fontSize: 30, color: _color, fontWeight: FontWeight.bold, ),
+        fontSize: 30,
+        color: _color,
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 }
@@ -20,7 +24,8 @@ class BigText extends StatelessWidget {
 class MediumText extends StatelessWidget {
   final String _text;
   final Color _color;
-  const MediumText({super.key, required String text, Color color = Colors.black})
+  const MediumText(
+      {super.key, required String text, Color color = Colors.black})
       : _text = text,
         _color = color;
 
@@ -28,8 +33,7 @@ class MediumText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       _text.toUpperCase(),
-      style: TextStyle(
-          fontSize: 20, color: _color ),
+      style: TextStyle(fontSize: 20, color: _color),
     );
   }
 }
@@ -45,8 +49,14 @@ class SmallText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       _text,
-      style: TextStyle(
-          fontSize: 14, color: _color ),
+      style: TextStyle(fontSize: 14, color: _color),
     );
   }
+}
+
+String translateMessage(String message) {
+  return Intl.message(
+    message,
+    name: message,
+  );
 }

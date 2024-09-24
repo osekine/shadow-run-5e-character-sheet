@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shadowrun_5e_character_sheet/common/data/i_repository.dart';
+import 'package:shadowrun_5e_character_sheet/features/info/model/attribute_types.dart';
 import 'package:shadowrun_5e_character_sheet/features/info/model/info.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -14,10 +15,10 @@ part 'character_model.g.dart';
 @JsonSerializable()
 class CharacterModel {
   final InfoModel info;
-  final Attributes attributes;
+  late final Map<CharacterAttributes, AttributeModel> attributes;
   final HealthModel health;
   final List<WeaponModel> weapons;
-  final Skills skills;
+  late final Skills skills;
   // final List<ElectronicModel> devices;
 
   CharacterModel({
@@ -29,11 +30,19 @@ class CharacterModel {
     // required this.devices
   });
 
-  CharacterModel.start({required this.attributes})
+  CharacterModel.start()
       : info = InfoModel(),
         health = HealthModel(),
-        weapons = List.empty(growable: true),
-        skills = Skills.start(model: attributes);
+        weapons = List.empty(growable: true) {
+    attributes = {
+      for (var element in CharacterAttributes.values)
+        element: AttributeModel(
+          name: element.name,
+          value: 1,
+        )
+    };
+    skills = Skills.start(model: attributes);
+  }
   // devices = List.empty(growable: true);
 
   factory CharacterModel.fromJson(Map<String, dynamic> json) =>
@@ -43,6 +52,12 @@ class CharacterModel {
 }
 
 class CharacterProvider extends InheritedWidget {
+  const CharacterProvider({
+    super.key,
+    required this.model,
+    required super.child,
+  });
+
   final CharacterModel model;
 
   Future<void> _saveCharacter() async {
@@ -54,12 +69,6 @@ class CharacterProvider extends InheritedWidget {
     _saveCharacter();
     return model != oldWidget.model;
   }
-
-  const CharacterProvider({
-    super.key,
-    required this.model,
-    required super.child,
-  });
 
   static CharacterModel of(BuildContext context) {
     return context

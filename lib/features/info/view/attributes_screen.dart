@@ -3,7 +3,7 @@ import 'package:shadowrun_5e_character_sheet/features/info/model/attribute_types
 import 'package:shadowrun_5e_character_sheet/features/info/view/treshold_widget.dart';
 
 import '../../../common/model/character_model.dart';
-import '../../../common/widget/text_widgets.dart';
+import '../../../common/view/text_widgets.dart';
 import 'attribute_widget.dart';
 
 class AttributesScreen extends StatelessWidget {

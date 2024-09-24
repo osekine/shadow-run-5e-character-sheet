@@ -46,6 +46,7 @@ class _MyAppState extends State<MyApp> {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
+        S.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
       theme: ThemeData(

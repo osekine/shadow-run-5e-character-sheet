@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shadowrun_5e_character_sheet/features/info/model/attributes_model.dart';
-import 'package:shadowrun_5e_character_sheet/generated/l10n.dart';
 
-import '../../../common/widget/text_widgets.dart';
-import '../../../common/widget/chage_value_wiget.dart';
+import '../../../common/view/text_widgets.dart';
+import '../../../common/view/chage_value_wiget.dart';
 
 class AttributeWidget extends StatefulWidget {
   final AttributeModel model;
@@ -43,9 +42,8 @@ class _AttributeWidgetState extends State<AttributeWidget> {
                                   context: context,
                                   builder: ((context) => ChangeValueWidget(
                                         value: widget.model.value,
-                                        title: Intl.message(
-                                            widget.model.toString(),
-                                            name: widget.model.toString()),
+                                        title:
+                                            translateMessage(widget.model.name),
                                       )),
                                 );
                                 if (a != null) {
@@ -67,7 +65,7 @@ class _AttributeWidgetState extends State<AttributeWidget> {
                             ),
                           ))),
                   MediumText(
-                    text: widget.model.toString(),
+                    text: translateMessage(widget.model.name),
                     color: widget.color,
                   ),
                 ]),

@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:shadowrun_5e_character_sheet/features/combat/model/weapon_model.dart';
 
-import '../../../common/widget/text_widgets.dart';
+import '../../../common/view/text_widgets.dart';
 
 class WeaponWidget extends StatelessWidget {
   final WeaponModel model;

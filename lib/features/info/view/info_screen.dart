@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shadowrun_5e_character_sheet/common/model/character_model.dart';
-import 'package:shadowrun_5e_character_sheet/common/widget/text_widgets.dart';
+import 'package:shadowrun_5e_character_sheet/common/view/text_widgets.dart';
 
 class InfoScreen extends StatefulWidget {
   const InfoScreen({super.key});

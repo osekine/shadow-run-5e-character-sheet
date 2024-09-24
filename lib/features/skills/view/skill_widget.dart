@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shadowrun_5e_character_sheet/common/model/character_model.dart';
-import 'package:shadowrun_5e_character_sheet/common/widget/roll_dice.dart';
+import 'package:shadowrun_5e_character_sheet/common/view/roll_dice.dart';
 
 import '../model/skill_model.dart';
-import '../../../common/widget/text_widgets.dart';
-import '../../../common/widget/chage_value_wiget.dart';
+import '../../../common/view/text_widgets.dart';
+import '../../../common/view/chage_value_wiget.dart';
 
 class SkillWidget extends StatefulWidget {
   final SkillModel model;

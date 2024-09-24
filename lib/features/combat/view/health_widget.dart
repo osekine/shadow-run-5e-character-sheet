@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../common/model/character_model.dart';
 import '../model/health_model.dart';
-import '../../../common/widget/text_widgets.dart';
-import '../../../common/widget/chage_value_wiget.dart';
+import '../../../common/view/text_widgets.dart';
+import '../../../common/view/chage_value_wiget.dart';
 
 class HealthWidget extends StatefulWidget {
   const HealthWidget({super.key});

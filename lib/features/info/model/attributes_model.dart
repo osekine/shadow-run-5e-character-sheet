@@ -15,7 +15,7 @@ class AttributeModel {
   int min;
 
   AttributeModel(
-      {required this.name, required this.value, this.min = 0, this.max = 6});
+      {required this.name, required this.value, this.min = 1, this.max = 6});
 
   factory AttributeModel.fromJson(Map<String, dynamic> json) =>
       _$AttributeModelFromJson(json);
@@ -28,53 +28,7 @@ class AttributeModel {
   }
 }
 
-@JsonSerializable()
-class Attributes {
-  AttributeModel strength;
-  AttributeModel agility;
-  AttributeModel body;
-  AttributeModel reaction;
-  AttributeModel logic;
-  AttributeModel intuition;
-  AttributeModel willpower;
-  AttributeModel charisma;
-  AttributeModel magic;
-  AttributeModel edge;
-  AttributeModel entity;
-
-  Attributes({
-    required this.strength,
-    required this.agility,
-    required this.body,
-    required this.reaction,
-    required this.logic,
-    required this.intuition,
-    required this.willpower,
-    required this.charisma,
-    required this.magic,
-    required this.edge,
-    required this.entity,
-  });
-
-  Attributes.start()
-      : strength = AttributeModel(name: "Сила", value: 1),
-        agility = AttributeModel(name: "Лов", value: 1),
-        body = AttributeModel(name: "Тело", value: 1),
-        reaction = AttributeModel(name: "Реа", value: 1),
-        logic = AttributeModel(name: "Лог", value: 1),
-        intuition = AttributeModel(name: "Инт", value: 1),
-        willpower = AttributeModel(name: "Воля", value: 1),
-        charisma = AttributeModel(name: "Хар", value: 1),
-        magic = AttributeModel(name: "Маг", value: 0),
-        edge = AttributeModel(name: "Грань", value: 6),
-        entity = AttributeModel(name: "Сущ", value: 600, max: 600);
-
-  factory Attributes.fromJson(Map<String, dynamic> json) =>
-      _$AttributesFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AttributesToJson(this);
-}
-
+//TODO: change to enum, store in map
 @JsonSerializable()
 class MatrixAttributes {
   final AttributeModel _rating;
